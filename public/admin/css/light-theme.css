@@ -1,0 +1,55 @@
+
+html.light-theme .sidebar-wrapper,
+html.light-theme .sidebar-wrapper .sidebar-header {
+
+    background-color: #ffffff;
+
+}
+
+
+html.light-theme .top-header .navbar {
+    background-color: #ffffff;
+}
+
+html.light-theme .top-header .navbar .searchbar .form-control {
+
+    border: 1px solid #e2e3e4;
+    box-shadow: none;
+
+}
+
+
+html.light-theme .top-header .navbar .searchbar .form-control:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25)
+}
+
+html.light-theme .top-header .navbar .user-setting {
+ 
+    border: 1px solid #e2e3e4;
+    box-shadow: none;
+
+}
+
+html.light-theme .mobile-toggle-icon,
+html.light-theme .search-toggle-icon,
+html.light-theme .projects,
+html.light-theme .notifications,
+html.light-theme .messages {
+
+    border: 1px solid #e2e3e4;
+    box-shadow: none;
+    
+}
+
+html.light-theme .sidebar-wrapper .iconmenu .nav-pills .nav-link {
+
+    border: 1px solid #e2e3e4;
+    box-shadow: none !important;
+
+}
+
+html.light-theme .sidebar-wrapper .iconmenu .nav-toggle-box .nav-toggle-icon {
+    border: 1px solid #e2e3e4;
+    box-shadow: none !important;
+}
