@@ -11,28 +11,32 @@
             </div>
             <div class="card-body">
                 <div class="filter">
-                    <div class="row mb-3">
-                        <div class="col-lg-3">
-                            <label>Branch</label>
-                            <select class="form-control filter_data" id="branch_id">
-                                <option value="">-- Branch --</option>
-                                @foreach ($branches as $branch)
-                                <option value="{{ $branch->id }}">{{ $branch->branch_name }}</option>
-                                @endforeach
-                            </select>
+                    <form action="{{ route('report.income.export') }}" method="post">
+                        @csrf
+                        <div class="row mb-3">
+                            <div class="col-lg-3">
+                                <label>Branch</label>
+                                <select class="form-control filter_data" id="branch_id" name="branch_id">
+                                    <option value="">-- Branch --</option>
+                                    @foreach ($branches as $branch)
+                                    <option value="{{ $branch->id }}">{{ $branch->branch_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Start Date</label>
+                                <input type="date" id="created_at_start" name="created_at_start" class="form-control filter_data">
+                            </div>
+                            <div class="col-lg-3">
+                                <label>End Date</label>
+                                <input type="date" id="created_at_end" name="created_at_end" class="form-control filter_data">
+                            </div>
+                            <div class="col-lg-3">
+                                <button type="button" class="btn btn-info btn-sm mt-4" id="print">Print</button>
+                                <button type="submit" class="btn btn-success btn-sm mt-4">Export</button>
+                            </div>
                         </div>
-                        <div class="col-lg-3">
-                            <label>Start Date</label>
-                            <input type="date" id="created_at_start" class="form-control filter_data">
-                        </div>
-                        <div class="col-lg-3">
-                            <label>End Date</label>
-                            <input type="date" id="created_at_end" class="form-control filter_data">
-                        </div>
-                        <div class="col-lg-3">
-                            <button type="button" class="btn btn-info btn-sm mt-4" id="print">Print</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-primary" id="all_income_data">

@@ -77,6 +77,8 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/report-income', [ReportController::class, 'reportIncome'])->name('report.income');
         Route::get('/report-income-print', [ReportController::class, 'reportIncomePrint'])->name('report.income.print');
+        Route::post('/report-income-export', [ReportController::class, 'reportIncomeExport'])->name('report.income.export');
+
         // Admin
         Route::resource('branch', BranchController::class);
         Route::get('/branch-recycle', [BranchController::class, 'recycle'])->name('branch.recycle');

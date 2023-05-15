@@ -405,7 +405,6 @@ $(function() {
             }
         }
     };
-
     var chart = new ApexCharts(document.querySelector("#chart2"), options);
     chart.render();
 
@@ -492,7 +491,7 @@ $(function() {
                     },
                     value: {
                         formatter: function (val) {
-                            return val + "%";
+                            return val;
                         },
                         color: '#000',
                         fontSize: '45px',
