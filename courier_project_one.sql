@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 02:11 PM
+-- Generation Time: May 15, 2023 at 07:18 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -47,8 +47,8 @@ CREATE TABLE `branches` (
 --
 
 INSERT INTO `branches` (`id`, `branch_name`, `branch_email`, `branch_phone_number`, `branch_address`, `status`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Dhaka Branch', 'dhaka@email.com', '01517805999', 'Dhaka, BD', 'Active', 2, 2, NULL, '2023-05-03 06:08:48', '2023-05-03 06:11:01', NULL),
-(2, 'Jessore Branch', 'jessore@email.com', '01878136530', 'Jessore, BD', 'Active', 2, NULL, NULL, '2023-05-03 08:56:28', '2023-05-03 08:56:28', NULL);
+(1, 'Dhaka Branch', 'dhakabranch@email.com', '01878136530', 'Dhaka, BD', 'Active', 1, NULL, NULL, '2023-05-14 22:45:17', '2023-05-14 22:45:17', NULL),
+(2, 'Khulna Branch', 'khulnabranch@email.com', '01878136530', 'Khulna, Branch', 'Active', 1, NULL, NULL, '2023-05-14 22:45:42', '2023-05-14 22:45:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,7 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`id`, `company_name`, `company_owner`, `company_email`, `company_phone_number`, `company_address`, `company_url`, `company_photo`, `status`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Spy It', 'Sabbir', 'spyit@email.com', '01517805999', 'Dhaka', 'http://www.spyit.com', 'default_company_photo.jpg', 'Active', 2, 2, NULL, '2023-05-03 06:30:43', '2023-05-03 06:35:40', NULL);
+(1, 'Spy IT', 'Sovon Khan', 'sovon@email.com', '01878136530', 'Dhaka, BD', 'http://spyit.com', 'spy-it.jpg', 'Active', 1, 1, NULL, '2023-05-14 22:49:42', '2023-05-14 22:55:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -98,13 +98,6 @@ CREATE TABLE `contact_messages` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `contact_messages`
---
-
-INSERT INTO `contact_messages` (`id`, `name`, `email`, `phone_number`, `subject`, `message`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Sabbir', 'sabbirahammed@gmail.com', '01845784525', 'Test', 'TestTestTestTestTest', 'Read', '2023-05-03 06:43:17', '2023-05-03 06:43:36');
 
 -- --------------------------------------------------------
 
@@ -130,7 +123,10 @@ CREATE TABLE `costs` (
 --
 
 INSERT INTO `costs` (`id`, `unit_id`, `cost_rate`, `status`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '1', 25.00, 'Active', 2, NULL, NULL, '2023-05-03 06:24:37', '2023-05-03 06:24:37', NULL);
+(1, '2', 20.00, 'Active', 1, NULL, NULL, '2023-05-14 22:46:39', '2023-05-14 22:46:39', NULL),
+(2, '4', 30.00, 'Active', 1, NULL, NULL, '2023-05-14 22:48:41', '2023-05-14 22:48:41', NULL),
+(3, '1', 50.00, 'Active', 1, NULL, NULL, '2023-05-14 22:48:50', '2023-05-14 22:48:50', NULL),
+(4, '5', 80.00, 'Active', 1, NULL, NULL, '2023-05-14 22:48:56', '2023-05-14 22:48:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -147,16 +143,6 @@ CREATE TABLE `courier_details` (
   `cost_rate` double(8,2) NOT NULL,
   `total_cost_rate` double(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `courier_details`
---
-
-INSERT INTO `courier_details` (`id`, `courier_summary_id`, `item_description`, `unit_id`, `item_quantity`, `cost_rate`, `total_cost_rate`) VALUES
-(1, 1, 'Item1', 1, 1, 25.00, 25.00),
-(2, 1, 'Item2', 1, 2, 25.00, 50.00),
-(3, 2, 'Item3', 1, 2, 25.00, 50.00),
-(4, 2, 'Item4', 1, 2, 25.00, 50.00);
 
 -- --------------------------------------------------------
 
@@ -190,14 +176,6 @@ CREATE TABLE `courier_summaries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `courier_summaries`
---
-
-INSERT INTO `courier_summaries` (`id`, `tracking_id`, `sender_type`, `sender_branch_id`, `sender_name`, `sender_email`, `sender_phone_number`, `sender_address`, `receiver_branch_id`, `receiver_name`, `receiver_email`, `receiver_phone_number`, `receiver_address`, `special_comment`, `grand_total`, `payment_type`, `payment_status`, `payment_amount`, `courier_status`, `sender_agent_id`, `delivery_agent_id`, `otp`, `created_at`, `updated_at`) VALUES
-(1, 30523745, 'Individual', 1, 'Sovon', NULL, '01953321402', 'Dhaka', 2, 'Sabbir', NULL, '01517805999', 'Jessore', 'Test', 75.00, 'Sender Payment', 'Paid', 75.00, 'Shipped', 5, NULL, 46051, '2023-05-03 10:13:39', '2023-05-03 12:00:27'),
-(2, 30523356, 'Company', 2, 'Spy It', 'spyit@email.com', '01517805999', 'Dhaka', 1, 'Sovon', NULL, '01517805999', 'Dhaka', NULL, 100.00, 'Receiver Payment', 'Paid', 0.00, 'Delivered', 6, 5, 99312, '2023-05-03 10:16:30', '2023-05-03 12:03:20');
 
 -- --------------------------------------------------------
 
@@ -234,7 +212,7 @@ CREATE TABLE `default_settings` (
 --
 
 INSERT INTO `default_settings` (`id`, `app_name`, `app_url`, `time_zone`, `favicon`, `logo_photo`, `main_phone`, `support_phone`, `main_email`, `support_email`, `address`, `google_map_link`, `facebook_link`, `twitter_link`, `instagram_link`, `linkedin_link`, `youtube_link`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Laravel', 'http://127.0.0.1:8000', 'Asia/Dhaka', 'default_favicon.png', 'default_logo_photo.png', '01953321402', '01953321402', 'info@email.com', 'support@email.com', 'Dhaka, BD', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2023-05-03 04:57:15', '2023-05-02 23:45:17');
+(1, 'Courier', 'http://127.0.0.1:8000', 'UTC', 'default_favicon.png', 'default_logo_photo.png', '01878136530', '01878136530', 'info@courier.com', 'support@courier.com', 'Dhaka, BD', 'courier', 'courier', 'courier', 'courier', 'courier', 'courier', 1, 1, '2023-05-15 04:14:42', '2023-05-14 22:25:37');
 
 -- --------------------------------------------------------
 
@@ -278,7 +256,7 @@ CREATE TABLE `mail_settings` (
 --
 
 INSERT INTO `mail_settings` (`id`, `mailer`, `host`, `port`, `username`, `password`, `encryption`, `from_address`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'smtp', 'sandbox.smtp.mailtrap.io', '2525', '071aa50653a80d', '8dd8b67f9819e0', 'tls', 'info@gmail.com', 1, 1, '2023-05-03 04:57:15', '2023-05-03 05:56:09');
+(1, 'smtp', 'sandbox.smtp.mailtrap.io', '2525', '071aa50653a80d', '8dd8b67f9819e0', 'tls', 'info@gmail.com', 1, 1, '2023-05-15 04:14:42', '2023-05-14 22:25:51');
 
 -- --------------------------------------------------------
 
@@ -297,22 +275,22 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(97, '2014_10_12_000000_create_users_table', 1),
-(98, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(99, '2019_08_19_000000_create_failed_jobs_table', 1),
-(100, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(101, '2023_02_28_174955_create_branches_table', 1),
-(102, '2023_03_07_045824_create_units_table', 1),
-(103, '2023_03_07_063929_create_costs_table', 1),
-(104, '2023_03_24_091341_create_testimonials_table', 1),
-(105, '2023_03_24_091818_create_services_table', 1),
-(106, '2023_03_27_051111_create_companies_table', 1),
-(107, '2023_03_27_094052_create_default_settings_table', 1),
-(108, '2023_03_27_094255_create_mail_settings_table', 1),
-(109, '2023_03_27_094347_create_sms_settings_table', 1),
-(110, '2023_03_28_064600_create_contact_messages_table', 1),
-(111, '2023_03_28_100719_create_courier_summaries_table', 1),
-(112, '2023_03_28_101117_create_courier_details_table', 1);
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2023_02_28_174955_create_branches_table', 1),
+(6, '2023_03_07_045824_create_units_table', 1),
+(7, '2023_03_07_063929_create_costs_table', 1),
+(8, '2023_03_24_091341_create_testimonials_table', 1),
+(9, '2023_03_24_091818_create_services_table', 1),
+(10, '2023_03_27_051111_create_companies_table', 1),
+(11, '2023_03_27_094052_create_default_settings_table', 1),
+(12, '2023_03_27_094255_create_mail_settings_table', 1),
+(13, '2023_03_27_094347_create_sms_settings_table', 1),
+(14, '2023_03_28_064600_create_contact_messages_table', 1),
+(15, '2023_03_28_100719_create_courier_summaries_table', 1),
+(16, '2023_03_28_101117_create_courier_details_table', 1);
 
 -- --------------------------------------------------------
 
@@ -370,7 +348,12 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `service_name`, `service_details`, `service_photo`, `status`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Test 1', 'Test 1', 'test-1.png', 'Active', 2, NULL, NULL, '2023-05-03 06:36:23', NULL, NULL);
+(1, 'Service 1', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque repudiandae non eligendi sint laborum ab at dolores quia dolore iure totam iste, voluptatem placeat ea fugiat porro doloribus. Qui aliquid magni, non delectus molestiae earum cupiditate odio in amet? Quo esse saepe ipsam inventore, odio tempora itaque nam blanditiis aliquam!', 'service-1.png', 'Active', 1, NULL, NULL, '2023-05-14 22:57:43', NULL, NULL),
+(2, 'Service 2', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque repudiandae non eligendi sint laborum ab at dolores quia dolore iure totam iste, voluptatem placeat ea fugiat porro doloribus. Qui aliquid magni, non delectus molestiae earum cupiditate odio in amet? Quo esse saepe ipsam inventore, odio tempora itaque nam blanditiis aliquam!', 'service-2.png', 'Active', 1, NULL, NULL, '2023-05-14 22:57:59', NULL, NULL),
+(3, 'Service 3', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque repudiandae non eligendi sint laborum ab at dolores quia dolore iure totam iste, voluptatem placeat ea fugiat porro doloribus. Qui aliquid magni, non delectus molestiae earum cupiditate odio in amet? Quo esse saepe ipsam inventore, odio tempora itaque nam blanditiis aliquam!', 'service-3.png', 'Active', 1, NULL, NULL, '2023-05-14 22:58:09', NULL, NULL),
+(4, 'Service 4', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque repudiandae non eligendi sint laborum ab at dolores quia dolore iure totam iste, voluptatem placeat ea fugiat porro doloribus. Qui aliquid magni, non delectus molestiae earum cupiditate odio in amet? Quo esse saepe ipsam inventore, odio tempora itaque nam blanditiis aliquam!', 'service-4.png', 'Active', 1, NULL, NULL, '2023-05-14 22:58:21', NULL, NULL),
+(5, 'Service 5', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque repudiandae non eligendi sint laborum ab at dolores quia dolore iure totam iste, voluptatem placeat ea fugiat porro doloribus. Qui aliquid magni, non delectus molestiae earum cupiditate odio in amet? Quo esse saepe ipsam inventore, odio tempora itaque nam blanditiis aliquam!', 'service-5.png', 'Active', 1, NULL, NULL, '2023-05-14 22:58:34', NULL, NULL),
+(6, 'Service 6', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque repudiandae non eligendi sint laborum ab at dolores quia dolore iure totam iste, voluptatem placeat ea fugiat porro doloribus. Qui aliquid magni, non delectus molestiae earum cupiditate odio in amet? Quo esse saepe ipsam inventore, odio tempora itaque nam blanditiis aliquam!', 'service-6.png', 'Active', 1, NULL, NULL, '2023-05-14 22:58:44', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -393,7 +376,7 @@ CREATE TABLE `sms_settings` (
 --
 
 INSERT INTO `sms_settings` (`id`, `api_key`, `sender_id`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'VjkIEblFGYFP7yH5NyOk', '8809601004416', 1, 1, '2023-05-03 04:57:15', '2023-05-03 05:58:34');
+(1, 'VjkIEblFGYFP7yH5NyOk', '8809601004416', 1, 1, '2023-05-15 04:14:42', '2023-05-14 22:25:56');
 
 -- --------------------------------------------------------
 
@@ -420,7 +403,10 @@ CREATE TABLE `testimonials` (
 --
 
 INSERT INTO `testimonials` (`id`, `testimonial_author_name`, `testimonial_author_title`, `testimonial_content`, `status`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Sabbir Saba', 'Owner', 'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test', 'Active', 2, NULL, NULL, '2023-05-03 06:38:56', '2023-05-03 06:38:56', NULL);
+(1, 'Sovon', 'CEO', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque repudiandae non eligendi sint laborum ab at dolores quia dolore iure totam iste, voluptatem placeat ea fugiat porro doloribus. Qui aliquid magni, non delectus molestiae earum cupiditate odio in amet? Quo esse saepe ipsam inventore, odio tempora itaque nam blanditiis aliquam!', 'Active', 1, NULL, NULL, '2023-05-14 22:59:35', '2023-05-14 22:59:35', NULL),
+(2, 'Alif', 'Founder', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque repudiandae non eligendi sint laborum ab at dolores quia dolore iure totam iste, voluptatem placeat ea fugiat porro doloribus. Qui aliquid magni, non delectus molestiae earum cupiditate odio in amet? Quo esse saepe ipsam inventore, odio tempora itaque nam blanditiis aliquam!', 'Active', 1, NULL, NULL, '2023-05-14 22:59:58', '2023-05-14 22:59:58', NULL),
+(3, 'Shahariya', 'Co-founder', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque repudiandae non eligendi sint laborum ab at dolores quia dolore iure totam iste, voluptatem placeat ea fugiat porro doloribus. Qui aliquid magni, non delectus molestiae earum cupiditate odio in amet? Quo esse saepe ipsam inventore, odio tempora itaque nam blanditiis aliquam!', 'Active', 1, NULL, NULL, '2023-05-14 23:00:13', '2023-05-14 23:00:13', NULL),
+(4, 'Sabbir', 'Manager', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque repudiandae non eligendi sint laborum ab at dolores quia dolore iure totam iste, voluptatem placeat ea fugiat porro doloribus. Qui aliquid magni, non delectus molestiae earum cupiditate odio in amet? Quo esse saepe ipsam inventore, odio tempora itaque nam blanditiis aliquam!', 'Active', 1, NULL, NULL, '2023-05-14 23:00:26', '2023-05-14 23:00:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -445,7 +431,11 @@ CREATE TABLE `units` (
 --
 
 INSERT INTO `units` (`id`, `unit_name`, `status`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'KG', 'Active', 2, NULL, NULL, '2023-05-03 06:24:21', '2023-05-03 06:24:21', NULL);
+(1, '1 Kg', 'Active', 1, 1, NULL, '2023-05-14 22:46:08', '2023-05-14 22:47:04', NULL),
+(2, '250 Gram', 'Active', 1, 1, NULL, '2023-05-14 22:46:14', '2023-05-14 22:46:49', NULL),
+(3, 'Letter', 'Active', 1, 1, NULL, '2023-05-14 22:46:18', '2023-05-14 22:48:23', NULL),
+(4, '500 Gram', 'Active', 1, NULL, NULL, '2023-05-14 22:46:57', '2023-05-14 22:46:57', NULL),
+(5, '2 Kg', 'Active', 1, NULL, NULL, '2023-05-14 22:47:13', '2023-05-14 22:47:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -477,12 +467,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone_number`, `gender`, `date_of_birth`, `address`, `profile_photo`, `last_active`, `role`, `branch_id`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'superadmin@email.com', '$2y$10$t6gigB.BSeSMMFZ3gXd6M.ev37Qc2gpxVOd7m.eW0pUj26WC9AWkm', '01953321402', 'Male', '2023-05-03', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-03 06:02:54', 'Super Admin', NULL, 'Active	', NULL, '2023-05-03 04:57:15', '2023-05-03 06:02:54'),
-(2, 'Admin', 'admin@email.com', '$2y$10$JGckDhq55xZGgrQbzcyK1O0jqj.gJmQoiLuvyYDrlMzx7rW4mgcI2', '01953321402', 'Male', '2023-05-03', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-03 10:08:49', 'Admin', NULL, 'Active	', NULL, '2023-05-03 04:57:15', '2023-05-03 10:08:49'),
-(3, 'Manager 1', 'manager1@email.com', '$2y$10$n3kbKCcfLzO2HC2b9icfX.vJRXQOEYRTskNu0T8HQYl2VHRPgQS9W', '01878136530', 'Male', '2023-05-03', 'Dhaka, Bd', 'default_profile_photo.png', '2023-05-03 12:01:07', 'Manager', 1, 'Active', NULL, '2023-05-03 04:57:15', '2023-05-03 12:01:07'),
-(4, 'Manager 2', 'manager2@email.com', '$2y$10$YmOvnZWFI2p2YrSq6WQIdefOOExx1.du3log5fhb.k2EbdW2yZTfe', '01878136530', 'Male', '2023-05-03', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-03 12:00:19', 'Manager', 2, 'Active', NULL, '2023-05-03 04:57:15', '2023-05-03 12:00:19'),
-(5, 'Staff 1', 'staff1@email.com', '$2y$10$8VgwWINJejlk6yT5B5uK1OfXPmpGOHAPAhYDQApQCwt69.iMIv3T.', '01953321402', 'Male', '2023-05-03', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-03 12:09:34', 'Staff', 1, 'Active', NULL, '2023-05-03 04:57:15', '2023-05-03 12:09:34'),
-(6, 'Staff 2', 'staff2@email.com', '$2y$10$LFKIs.h38xUn871IjN8so.DYAGTzTVfU8s/pk6FPMkZf3zNU.74.K', NULL, NULL, NULL, NULL, 'default_profile_photo.png', '2023-05-03 10:14:13', 'Staff', 2, 'Active', NULL, '2023-05-03 04:57:15', '2023-05-03 10:14:13');
+(1, 'Super Admin', 'superadmin@email.com', '$2y$10$gfXTDxamlHRqQrbipcQUfu3gWT7WKzc.suB9BMK0f9yDL41OS0KIO', '01953321402', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-14 23:00:59', 'Super Admin', NULL, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-14 23:00:59'),
+(2, 'Admin', 'admin@email.com', '$2y$10$0yFx6jO3aoOGwY5SqUcoxOOeTiSLe79Of23fcRAD2u70Gzebc2HGi', '01878136530', 'Male', '2023-05-15', 'Jessore, BD', 'default_profile_photo.png', '2023-05-14 23:03:16', 'Admin', NULL, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-14 23:03:16'),
+(3, 'Manager 1', 'manager1@email.com', '$2y$10$ZxntK5.zQjd.mZAG/rN3e.ONZUTzBEL6LTEhxXDrJWREYTmBdyPoO', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-14 23:10:10', 'Manager', 1, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-14 23:10:10'),
+(4, 'Manager 2', 'manager2@email.com', '$2y$10$Yv3fBtgfo9WNunTVzMSIietB9bEqX7mhFelN40PK3WWy1hisp5N9i', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-05-14 23:11:48', 'Manager', 2, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-14 23:11:48'),
+(5, 'Staff 1', 'staff1@email.com', '$2y$10$BtzkUCp6mk6Z8D2Bv9MLd.5b7yWR/ZoqpSddVRHsrq50JTFUUEcmu', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-14 23:17:53', 'Staff', 1, 'Active	', 'jXodJjDgfHHD59JwrpNwFQ2ypneQzltj3twR7gekmkrlowtBopxH3vn7dzcc', '2023-05-15 04:14:42', '2023-05-14 23:17:53'),
+(6, 'Staff 2', 'staff2@email.com', '$2y$10$g1suCd7rijpTTOM0xeUBzeP0ElpvRceIYXeADRBplpQZGWGS.G0g.', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-05-14 23:17:05', 'Staff', 2, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-14 23:17:05');
 
 --
 -- Indexes for dumped tables
@@ -615,25 +605,25 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `contact_messages`
 --
 ALTER TABLE `contact_messages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `costs`
 --
 ALTER TABLE `costs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `courier_details`
 --
 ALTER TABLE `courier_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `courier_summaries`
 --
 ALTER TABLE `courier_summaries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `default_settings`
@@ -657,7 +647,7 @@ ALTER TABLE `mail_settings`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -669,7 +659,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `sms_settings`
@@ -681,13 +671,13 @@ ALTER TABLE `sms_settings`
 -- AUTO_INCREMENT for table `testimonials`
 --
 ALTER TABLE `testimonials`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `units`
 --
 ALTER TABLE `units`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -37,8 +37,8 @@
                 </div>
                 <div class="col-6">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" name="remember_me" type="checkbox" id="flexSwitchCheckChecked">
-                        <label class="form-check-label" for="flexSwitchCheckChecked">Remember Me</label>
+                        <input class="form-check-input" name="remember" type="checkbox" id="remember_me">
+                        <label class="form-check-label" for="remember_me">Remember Me</label>
                     </div>
                 </div>
                 <div class="col-6 text-end">
