@@ -23,9 +23,10 @@ class UserTableSeeder extends Seeder
                 'email' => 'superadmin@email.com',
                 'password' => Hash::make('12345678'),
                 'role' => 'Super Admin',
+                'branch_id' => Null,
                 'profile_photo' => 'default_profile_photo.png',
                 'last_active' => Carbon::now(),
-                'status' => 'Active	',
+                'status' => 'Active',
                 'created_at' => Carbon::now(),
             ],
             // Admin
@@ -34,9 +35,10 @@ class UserTableSeeder extends Seeder
                 'email' => 'admin@email.com',
                 'password' => Hash::make('12345678'),
                 'role' => 'Admin',
+                'branch_id' => Null,
                 'profile_photo' => 'default_profile_photo.png',
                 'last_active' => Carbon::now(),
-                'status' => 'Active	',
+                'status' => 'Active',
                 'created_at' => Carbon::now(),
             ],
             // Manager
@@ -48,7 +50,7 @@ class UserTableSeeder extends Seeder
                 'branch_id' => 1,
                 'profile_photo' => 'default_profile_photo.png',
                 'last_active' => Carbon::now(),
-                'status' => 'Active	',
+                'status' => 'Active',
                 'created_at' => Carbon::now(),
             ],
             [
@@ -59,7 +61,7 @@ class UserTableSeeder extends Seeder
                 'branch_id' => 2,
                 'profile_photo' => 'default_profile_photo.png',
                 'last_active' => Carbon::now(),
-                'status' => 'Active	',
+                'status' => 'Active',
                 'created_at' => Carbon::now(),
             ],
             // Staff
@@ -71,7 +73,7 @@ class UserTableSeeder extends Seeder
                 'branch_id' => 1,
                 'profile_photo' => 'default_profile_photo.png',
                 'last_active' => Carbon::now(),
-                'status' => 'Active	',
+                'status' => 'Active',
                 'created_at' => Carbon::now(),
             ],
             [
@@ -82,7 +84,7 @@ class UserTableSeeder extends Seeder
                 'branch_id' => 2,
                 'profile_photo' => 'default_profile_photo.png',
                 'last_active' => Carbon::now(),
-                'status' => 'Active	',
+                'status' => 'Active',
                 'created_at' => Carbon::now(),
             ],
         ]);
