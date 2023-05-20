@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header">
         <h4 class="card-title">{{ env('APP_NAME') }}</h4>
-        <p class="card-text">Branch Name: {{ ($branch_id) ? App\Models\Branch::find($branch_id)->branch_name : "N/A" }}</p>
+        {{-- <p class="card-text">Branch Name: {{ ($branch_id) ? App\Models\Branch::find($branch_id)->branch_name : "N/A" }}</p> --}}
         <p class="card-text">Order Start Start: {{ ($created_at_start) ? $created_at_start : "N/A" }}</p>
         <p class="card-text">Order End Date: {{ ($created_at_end) ? $created_at_end : "N/A" }}</p>
     </div>
