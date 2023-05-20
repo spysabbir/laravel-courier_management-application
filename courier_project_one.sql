@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2023 at 07:18 AM
+-- Generation Time: May 20, 2023 at 01:07 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -144,6 +144,14 @@ CREATE TABLE `courier_details` (
   `total_cost_rate` double(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `courier_details`
+--
+
+INSERT INTO `courier_details` (`id`, `courier_summary_id`, `item_description`, `unit_id`, `item_quantity`, `cost_rate`, `total_cost_rate`) VALUES
+(1, 1, 'Test', 1, 5, 20.00, 100.00),
+(2, 2, 'sdf', 2, 1, 30.00, 30.00);
+
 -- --------------------------------------------------------
 
 --
@@ -176,6 +184,14 @@ CREATE TABLE `courier_summaries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `courier_summaries`
+--
+
+INSERT INTO `courier_summaries` (`id`, `tracking_id`, `sender_type`, `sender_branch_id`, `sender_name`, `sender_email`, `sender_phone_number`, `sender_address`, `receiver_branch_id`, `receiver_name`, `receiver_email`, `receiver_phone_number`, `receiver_address`, `special_comment`, `grand_total`, `payment_type`, `payment_status`, `payment_amount`, `courier_status`, `sender_agent_id`, `delivery_agent_id`, `otp`, `created_at`, `updated_at`) VALUES
+(1, 200523738, 'Company', 1, 'Spy IT', 'sovon@email.com', '01878136530', 'Dhaka, BD', 2, 'Sabbir', 'sabbirahammedsovon@gmail.com', '01953321402', 'Khulna', 'Test', 100.00, 'Sender Payment', 'Paid', 100.00, 'Delivered', 7, 6, 74211, '2023-05-20 04:23:34', '2023-05-20 04:56:30'),
+(2, 200523489, 'Individual', 2, 'Spy IT', 'sovon@email.com', '01878136530', 'dsff', 1, 'Sabbir', NULL, '01953321402', 'sdfsd', 'sdff', 30.00, 'Receiver Payment', 'Paid', 30.00, 'Delivered', 6, 5, 26722, '2023-05-20 04:24:29', '2023-05-20 04:55:07');
 
 -- --------------------------------------------------------
 
@@ -467,12 +483,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone_number`, `gender`, `date_of_birth`, `address`, `profile_photo`, `last_active`, `role`, `branch_id`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'superadmin@email.com', '$2y$10$gfXTDxamlHRqQrbipcQUfu3gWT7WKzc.suB9BMK0f9yDL41OS0KIO', '01953321402', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-14 23:00:59', 'Super Admin', NULL, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-14 23:00:59'),
-(2, 'Admin', 'admin@email.com', '$2y$10$0yFx6jO3aoOGwY5SqUcoxOOeTiSLe79Of23fcRAD2u70Gzebc2HGi', '01878136530', 'Male', '2023-05-15', 'Jessore, BD', 'default_profile_photo.png', '2023-05-14 23:03:16', 'Admin', NULL, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-14 23:03:16'),
-(3, 'Manager 1', 'manager1@email.com', '$2y$10$ZxntK5.zQjd.mZAG/rN3e.ONZUTzBEL6LTEhxXDrJWREYTmBdyPoO', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-14 23:10:10', 'Manager', 1, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-14 23:10:10'),
-(4, 'Manager 2', 'manager2@email.com', '$2y$10$Yv3fBtgfo9WNunTVzMSIietB9bEqX7mhFelN40PK3WWy1hisp5N9i', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-05-14 23:11:48', 'Manager', 2, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-14 23:11:48'),
-(5, 'Staff 1', 'staff1@email.com', '$2y$10$BtzkUCp6mk6Z8D2Bv9MLd.5b7yWR/ZoqpSddVRHsrq50JTFUUEcmu', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-14 23:17:53', 'Staff', 1, 'Active	', 'jXodJjDgfHHD59JwrpNwFQ2ypneQzltj3twR7gekmkrlowtBopxH3vn7dzcc', '2023-05-15 04:14:42', '2023-05-14 23:17:53'),
-(6, 'Staff 2', 'staff2@email.com', '$2y$10$g1suCd7rijpTTOM0xeUBzeP0ElpvRceIYXeADRBplpQZGWGS.G0g.', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-05-14 23:17:05', 'Staff', 2, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-14 23:17:05');
+(1, 'Super Admin', 'superadmin@email.com', '$2y$10$gfXTDxamlHRqQrbipcQUfu3gWT7WKzc.suB9BMK0f9yDL41OS0KIO', '01953321402', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-20 05:06:55', 'Super Admin', NULL, 'Active	', 'yeweH7I7xvaWHWYXh19Ye6XMYILDv5tezMAMab1XJqL2Kpy07ZeX4ATDEvD9', '2023-05-15 04:14:42', '2023-05-20 05:06:55'),
+(2, 'Admin', 'admin@email.com', '$2y$10$0yFx6jO3aoOGwY5SqUcoxOOeTiSLe79Of23fcRAD2u70Gzebc2HGi', '01878136530', 'Male', '2023-05-15', 'Jessore, BD', 'default_profile_photo.png', '2023-05-20 04:11:54', 'Admin', NULL, 'Active	', 'e8OvatTSFNMwM1in8kdaJbaJsmEE6HuHmGzjFiGSOC3uIJNCDrpdjJB5m0tr', '2023-05-15 04:14:42', '2023-05-20 04:11:54'),
+(3, 'Manager 1', 'manager1@email.com', '$2y$10$ZxntK5.zQjd.mZAG/rN3e.ONZUTzBEL6LTEhxXDrJWREYTmBdyPoO', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-20 04:45:36', 'Manager', 1, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-20 04:45:36'),
+(4, 'Manager 2', 'manager2@email.com', '$2y$10$Yv3fBtgfo9WNunTVzMSIietB9bEqX7mhFelN40PK3WWy1hisp5N9i', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-05-20 04:26:31', 'Manager', 2, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-20 04:26:31'),
+(5, 'Staff 1', 'staff1@email.com', '$2y$10$BtzkUCp6mk6Z8D2Bv9MLd.5b7yWR/ZoqpSddVRHsrq50JTFUUEcmu', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-20 04:55:48', 'Staff', 1, 'Active', 'vJ037wFHmNdfJFlhWpT1C5nP4bTCv8xN9mp4WiyJOHOZ6zr7ox7CNjb7qW0z', '2023-05-15 04:14:42', '2023-05-20 04:55:48'),
+(6, 'Staff 2', 'staff2@email.com', '$2y$10$g1suCd7rijpTTOM0xeUBzeP0ElpvRceIYXeADRBplpQZGWGS.G0g.', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-05-20 04:56:45', 'Staff', 2, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-20 04:56:45'),
+(7, 'Sabbir', 'staffsabbir@email.com', '$2y$10$XBmGgtwRKRbZdnQcK3c6BecqW8WSV7KrWtSgPfe/EOOYohTflolq2', '01878136530', NULL, NULL, 'Dhaka BD', 'default_profile_photo.png', '2023-05-20 04:23:44', 'Staff', 1, 'Active', 'Yyk3rSOkJQRw4KjOi5BihoMHyRFxZheZsP4uYFOJdwbxwYklrzpMGpAV0X1p', '2023-05-20 04:13:12', '2023-05-20 04:23:44'),
+(8, 'Md Sabbir Ahammed', 'staff3@email.com', '$2y$10$QDpRONaGpTn0hIEdCQm2M.RSFbsfcRwoSu/cHbD8CGm3jjfJgiRm.', '01878136530', NULL, NULL, 'DDD', 'default_profile_photo.png', '2023-05-20 10:18:30', 'Staff', 1, 'Active', NULL, '2023-05-20 04:18:30', '2023-05-20 04:18:30');
 
 --
 -- Indexes for dumped tables
@@ -617,13 +635,13 @@ ALTER TABLE `costs`
 -- AUTO_INCREMENT for table `courier_details`
 --
 ALTER TABLE `courier_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `courier_summaries`
 --
 ALTER TABLE `courier_summaries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `default_settings`
@@ -683,7 +701,7 @@ ALTER TABLE `units`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

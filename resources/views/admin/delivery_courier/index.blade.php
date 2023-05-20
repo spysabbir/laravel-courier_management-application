@@ -126,6 +126,9 @@
                     $('#payment_type').val(response.payment_type);
                     $('#payment_amount').val(response.grand_total);
                     $('#payment_status').val(response.payment_status);
+                    if(response.payment_status == 'Unpaid'){
+                        $('#payment_status').addClass('bg-danger');
+                    }
                 },
             });
         });

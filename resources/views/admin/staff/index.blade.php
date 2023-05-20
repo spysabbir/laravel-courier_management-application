@@ -42,23 +42,6 @@
                                         <span class="text-danger error-text password_confirmation_error"></span>
                                     </div>
                                     <div class="mb-3">
-                                        <label>Branch Name</label>
-                                        <select name="branch_id" class="form-select">
-                                            @php
-                                                if (Auth::user()->role == 'Manager') {
-                                                    $branchs = $branchs->where('id', Auth::user()->branch_id);
-                                                }else {
-                                                    $branchs = $branchs;
-                                                }
-                                            @endphp
-                                            <option value="">Select Branch</option>
-                                            @foreach ($branchs as $branch)
-                                            <option value="{{ $branch->id }}">{{ $branch->branch_name }}</option>
-                                            @endforeach
-                                        </select>
-                                        <span class="text-danger error-text branch_id_error"></span>
-                                    </div>
-                                    <div class="mb-3">
                                         <label>Phone Number</label>
                                         <input type="text" class="form-control" name="phone_number" placeholder="Phone number">
                                         <span class="text-danger error-text phone_number_error"></span>
@@ -116,14 +99,9 @@
                                         <div class="modal-body">
                                             <input type="hidden" id="staff_id">
                                             <div class="mb-3">
-                                                <label>Branch Name</label>
-                                                <select name="branch_id" class="form-select" id="branch_id">
-                                                    <option value="">Select Branch</option>
-                                                    @foreach ($branchs as $branch)
-                                                    <option value="{{ $branch->id }}">{{ $branch->branch_name }}</option>
-                                                    @endforeach
-                                                </select>
-                                                <span class="text-danger error-text update_branch_id_error"></span>
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" name="email" id="email">
+                                                <span class="text-danger error-text update_email_error"></span>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -227,7 +205,7 @@
                 type: "GET",
                 success: function (response) {
                     $('#staff_id').val(response.id);
-                    $('#branch_id').val(response.branch_id);
+                    $('#email').val(response.email);
                 },
             });
         });

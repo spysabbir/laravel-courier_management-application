@@ -68,6 +68,8 @@ class ManagerController extends Controller
     {
         $validator = Validator::make($request->all(), [
             '*' => 'required',
+            'password' => ['required', 'confirmed'],
+            'password_confirmation' => ['required'],
         ]);
 
         if($validator->fails()){
@@ -77,6 +79,7 @@ class ManagerController extends Controller
             ]);
         }else{
             User::create($request->except(['password', 'password_confirmation'])+[
+                'branch_id' => Auth::user()->branch_id,
                 'role' => 'Staff',
                 'password' => Hash::make($request->password),
             ]);

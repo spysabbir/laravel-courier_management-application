@@ -154,13 +154,25 @@ class SendCourierController extends Controller
                 <input type="checkbox" class="courier_id" name="change_status[]" value="'.$row->id.'">
                 ';
             })
+            ->editColumn('courier_status', function($row){
+                if($row->courier_status == 'Processing'){
+                    $courier_status = '
+                    <span class="badge bg-warning">'.$row->courier_status.'</span>
+                    ';
+                }else{
+                    $courier_status = '
+                    <span class="badge bg-success">'.$row->courier_status.'</span>
+                    ';
+                };
+                return $courier_status;
+            })
             ->addColumn('action', function ($row) {
                 $btn = '
                     <button type="button" data-id="'.$row->id.'" class="btn btn-success btn-sm viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal"><i class="bi bi-eye"></i></button>
                 ';
                 return $btn;
             })
-            ->rawColumns(['checkbox', 'action'])
+            ->rawColumns(['checkbox', 'courier_status', 'action'])
             ->make(true);
         }
         return view('admin.send_courier.processing_list');

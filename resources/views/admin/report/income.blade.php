@@ -14,7 +14,7 @@
                     <form action="{{ route('report.income.export') }}" method="post">
                         @csrf
                         <div class="row mb-3">
-                            <div class="col-lg-3">
+                            {{-- <div class="col-lg-3">
                                 <label>Branch</label>
                                 <select class="form-control filter_data" id="branch_id" name="branch_id">
                                     <option value="">-- Branch --</option>
@@ -22,7 +22,7 @@
                                     <option value="{{ $branch->id }}">{{ $branch->branch_name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="col-lg-3">
                                 <label>Start Date</label>
                                 <input type="date" id="created_at_start" name="created_at_start" class="form-control filter_data">

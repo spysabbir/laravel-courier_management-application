@@ -28,13 +28,25 @@ class DeliveryCourierController extends Controller
 
             return DataTables::of($courier_summaries)
             ->addIndexColumn()
+            ->editColumn('payment_status', function($row){
+                if($row->payment_status == 'Unpaid'){
+                    $payment_status = '
+                    <span class="badge bg-danger">'.$row->payment_status.'</span>
+                    ';
+                }else{
+                    $payment_status = '
+                    <span class="badge bg-success">'.$row->payment_status.'</span>
+                    ';
+                };
+                return $payment_status;
+            })
             ->addColumn('action', function ($row) {
                 $btn = '
                     <button type="button" data-id="'.$row->id.'" class="btn btn-primary btn-sm editBtn" data-bs-toggle="modal" data-bs-target="#editModal">Delivery</button>
                 ';
                 return $btn;
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['payment_status', 'action'])
             ->make(true);
         }
         return view('admin.delivery_courier.index');
@@ -129,13 +141,25 @@ class DeliveryCourierController extends Controller
                 <input type="checkbox" class="courier_id" name="change_status[]" value="'.$row->id.'">
                 ';
             })
+            ->editColumn('courier_status', function($row){
+                if($row->courier_status == 'On the way'){
+                    $courier_status = '
+                    <span class="badge bg-warning">'.$row->courier_status.'</span>
+                    ';
+                }else{
+                    $courier_status = '
+                    <span class="badge bg-success">'.$row->courier_status.'</span>
+                    ';
+                };
+                return $courier_status;
+            })
             ->addColumn('action', function ($row) {
                 $btn = '
                 <button type="button" data-id="'.$row->id.'" class="btn btn-success btn-sm viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal"><i class="bi bi-eye"></i></button>
                 ';
                 return $btn;
             })
-            ->rawColumns(['checkbox', 'action'])
+            ->rawColumns(['checkbox', 'courier_status', 'action'])
             ->make(true);
         }
         return view('admin.delivery_courier.processing_list');

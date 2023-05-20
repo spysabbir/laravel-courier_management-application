@@ -32,10 +32,10 @@
         </a>
         <ul>
             <li>
-                <a href="{{ route('report.courier') }}"><i class="bi bi-globe"></i>Courier</a>
+                <a href="{{ route('report.courier') }}"><i class="bi bi-bag"></i>Courier</a>
             </li>
             <li>
-                <a href="{{ route('report.income') }}"><i class="bi bi-globe"></i>Income</a>
+                <a href="{{ route('report.income') }}"><i class="bi bi-calculator"></i>Income</a>
             </li>
         </ul>
     </li>
@@ -150,5 +150,5 @@
         </a>
     </li>
     @endif
-    
+
 </ul>

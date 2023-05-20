@@ -31,7 +31,8 @@
         @endphp
     @endforeach
         <tr>
-            <td colspan="5">{{ $total }}</td>
+            <td>Total</td>
+            <td colspan="4">{{ $total }}</td>
         </tr>
     </tbody>
 </table>
