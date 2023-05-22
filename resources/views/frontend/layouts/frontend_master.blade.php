@@ -58,6 +58,7 @@
                             </button>
 
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                @if (Route::currentRouteName() == "index")
                                 <ul id="nav" class="navbar-nav ml-auto">
                                     <li class="nav-item">
                                         <a class="page-scroll" href="#home">Home</a>
@@ -75,6 +76,25 @@
                                         <a class="page-scroll" href="#testimonial">Testimonials</a>
                                     </li>
                                 </ul>
+                                @else
+                                <ul id="nav" class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('index') }}">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('all.service') }}">Services</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('about.us') }}">About</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('contact.us') }}">Contact Us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('check.status') }}">Check Status</a>
+                                    </li>
+                                </ul>
+                                @endif
                             </div>
                             <!-- navbar collapse -->
                         </nav>
