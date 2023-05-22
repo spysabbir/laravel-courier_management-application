@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\CostController;
 use App\Http\Controllers\Admin\DeliveryCourierController;
 use App\Http\Controllers\Admin\ManagerController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\SendCourierController;
@@ -70,6 +71,15 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/sms-setting', [SettingController::class, 'smsSetting'])->name('sms.setting');
         Route::post('/sms/setting/update/{id}', [SettingController::class, 'smsSettingUpdate'])->name('sms.setting.update');
+
+        Route::get('/about-us-page', [PageController::class, 'aboutUsPage'])->name('about.us.page');
+        Route::post('about/us/page/update/{id}', [PageController::class, 'aboutUsPageUpdate'])->name('about.us.page.update');
+
+        Route::get('/privacy-policy-page', [PageController::class, 'privacyPolicyPage'])->name('privacy.policy.page');
+        Route::post('privacy/policy/page/update/{id}', [PageController::class, 'privacyPolicyPageUpdate'])->name('privacy.policy.page.update');
+
+        Route::get('/terms-of-service-page', [PageController::class, 'termsOfServicePage'])->name('terms.of.service.page');
+        Route::post('terms/of/service/page/update/{id}', [PageController::class, 'termsOfServicePageUpdate'])->name('terms.of.service.page.update');
 
         Route::get('/report-courier', [ReportController::class, 'reportCourier'])->name('report.courier');
         Route::get('/report-courier-print', [ReportController::class, 'reportCourierPrint'])->name('report.courier.print');

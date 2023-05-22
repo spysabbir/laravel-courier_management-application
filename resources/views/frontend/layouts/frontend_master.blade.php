@@ -153,10 +153,10 @@
                                 <a href="{{ route('all.branch') }}">All Branch</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">Services</a>
+                                <a href="{{ route('all.service') }}">All Service</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">About Us</a>
+                                <a href="{{ route('about.us') }}">About Us</a>
                             </li>
                         </ul>
                     </div>
@@ -169,15 +169,15 @@
                                 <a href="{{ route('contact.us') }}">Contact Us</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">Privacy Policy</a>
+                                <a href="{{ route('privacy.policy') }}">Privacy Policy</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">Terms of Service</a>
+                                <a href="{{ route('terms.of.service') }}">Terms of Service</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <p class="text-center">Designed and Developed by <a href="{{ env('APP_URL') }}" style="color: #fff;" rel="nofollow">{{ env('APP_ENV') }}</a></p>
+                <p class="text-center">Designed and Developed by <a href="{{ env('APP_URL') }}" style="color: #fff;" rel="nofollow">{{ env('APP_NAME') }}</a></p>
             </div>
         </div>
     </footer>

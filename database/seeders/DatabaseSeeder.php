@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
             MailSettingTableSeeder::class,
             SmsSettingTableSeeder::class,
             UserTableSeeder::class,
+            AboutUsSeeder::class,
+            PrivacyPolicySeeder::class,
+            TermsOfServiceSeeder::class,
         ]);
     }
 }

@@ -14,12 +14,12 @@
                 <div class="hero-content">
                     <h1 class="wow fadeInUp" data-wow-delay=".2s">You're Using <span>Free Lite Version</span> </h1>
                     <p class="wow fadeInUp" data-wow-delay=".4s">Please, purchase full version of the template to remove footer credits, documentation and support.</p>
-                    <a href="#" rel="nofollow" class="main-btn btn-hover wow fadeInUp" data-wow-delay=".6s">Purchase Now</a>
+                    <a href="{{ route('check.status') }}" rel="nofollow" class="main-btn btn-hover wow fadeInUp" data-wow-delay=".6s">Check Status</a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="hero-img wow fadeInUp" data-wow-delay=".5s">
-                    <img src="{{ asset('frontend') }}/img/hero/hero-img.jpg" alt="">
+                    <img src="{{ asset('frontend') }}/img/hero/hero-img.png" alt="">
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="row">
-            @forelse ($services as $service)
+            @forelse ($services->take(6) as $service)
             <div class="col-lg-4 col-md-6">
                 <div class="single-service wow fadeInUp" data-wow-delay=".2s">
                     <div class="icon">
@@ -67,15 +67,15 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="about-img wow fadeInUp" data-wow-delay=".5s">
-                    <img src="{{ asset('frontend') }}/img/about/about-img.jpg" alt="">
+                    <img src="{{ asset('uploads/default_photo') }}/{{ $aboutUs->about_photo }}" alt="">
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="about-content">
                     <div class="section-title">
                         <span class="wow fadeInUp" data-wow-delay=".2s">About Us</span>
-                        <h1 class="wow fadeInUp" data-wow-delay=".4s">On-time Delivery and Customer Satisfaction</h1>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                        <h1 class="wow fadeInUp" data-wow-delay=".4s">{{ $aboutUs->headline }}</h1>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">{!! $aboutUs->description !!}</p>
                     </div>
                     <div class="rating-meta d-flex align-items-center wow fadeInUp" data-wow-delay=".65s">
                         <h5>Rating 4.8</h5>
@@ -116,15 +116,15 @@
                 <div class="delivery-content">
                     <div class="section-title">
                         <span class="wow fadeInUp" data-wow-delay=".2s">Fast Delivery</span>
-                        <h1 class="mb-35 wow fadeInUp" data-wow-delay=".4s">Order Now, Recieve Within 30mins</h1>
+                        <h1 class="mb-35 wow fadeInUp" data-wow-delay=".4s">Order Now, Recieve Within 3-7 days</h1>
                         <p class="mb-35 wow fadeInUp" data-wow-delay=".6s">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore hdht dolore magna aliquyam erat, sed diam voluptua.</p>
-                        <a href="javscript:void(0)" class="main-btn btn-hover wow fadeInUp" data-wow-delay=".8s">Download App</a>
+                        <a href="{{ route('check.status') }}" class="main-btn btn-hover wow fadeInUp" data-wow-delay=".8s">Check Status</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-7 order-first order-lg-last">
                 <div class="delivery-img wow fadeInUp" data-wow-delay=".5s">
-                    <img src="{{ asset('frontend') }}/img/delivery/delivery-img.jpg" alt="">
+                    <img src="{{ asset('frontend') }}/img/delivery/delivery-img.png" alt="">
                 </div>
             </div>
         </div>
@@ -138,7 +138,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="about-img received-img wow fadeInUp" data-wow-delay=".5s">
-                    <img src="{{ asset('frontend') }}/img/received/received-img.jpg" alt="">
+                    <img src="{{ asset('frontend') }}/img/received/received-img.png" alt="">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -167,8 +167,8 @@
             </div>
         </div>
         <div class="row testimonial-wrapper">
-            @forelse ($testimonials as $testimonial)
-            <div class="col-lg-4 col-md-6 -mt-30">
+            @forelse ($testimonials->take(6) as $testimonial)
+            <div class="col-lg-4 col-md-6 mt-30">
                 <div class="single-testimonial wow fadeInUp" data-wow-delay=".2s">
                     <div class="content">
                         <p>{{ $testimonial->testimonial_content }}</p>

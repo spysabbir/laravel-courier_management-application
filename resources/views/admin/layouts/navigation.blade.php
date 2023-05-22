@@ -39,6 +39,23 @@
             </li>
         </ul>
     </li>
+    <li>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bi bi-file-earmark-break-fill"></i></div>
+            <div class="menu-title">Page</div>
+        </a>
+        <ul>
+            <li>
+                <a href="{{ route('about.us.page') }}"><i class="bi bi-file-earmark-person"></i>About Us</a>
+            </li>
+            <li>
+                <a href="{{ route('privacy.policy.page') }}"><i class="bi bi-shield-exclamation"></i>Privacy Policy</a>
+            </li>
+            <li>
+                <a href="{{ route('terms.of.service.page') }}"><i class="bi bi-book"></i>Terms of Service</a>
+            </li>
+        </ul>
+    </li>
     @endif
 
     @if (Auth::user()->role == "Super Admin" || Auth::user()->role == "Admin")

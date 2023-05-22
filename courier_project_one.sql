@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2023 at 01:07 PM
+-- Generation Time: May 22, 2023 at 08:26 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `courier_project_one`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about_us`
+--
+
+CREATE TABLE `about_us` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `headline` text NOT NULL,
+  `description` longtext NOT NULL,
+  `about_photo` varchar(255) DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `about_us`
+--
+
+INSERT INTO `about_us` (`id`, `headline`, `description`, `about_photo`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'On-time Delivery and Customer Satisfaction 1', 'On-time Delivery and Customer Satisfaction On-time Delivery and Customer Satisfaction 1', 'About-Photo.png', 1, 1, '2023-05-21 22:51:38', '2023-05-22 00:19:18');
 
 -- --------------------------------------------------------
 
@@ -228,7 +252,7 @@ CREATE TABLE `default_settings` (
 --
 
 INSERT INTO `default_settings` (`id`, `app_name`, `app_url`, `time_zone`, `favicon`, `logo_photo`, `main_phone`, `support_phone`, `main_email`, `support_email`, `address`, `google_map_link`, `facebook_link`, `twitter_link`, `instagram_link`, `linkedin_link`, `youtube_link`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Courier', 'http://127.0.0.1:8000', 'UTC', 'default_favicon.png', 'default_logo_photo.png', '01878136530', '01878136530', 'info@courier.com', 'support@courier.com', 'Dhaka, BD', 'courier', 'courier', 'courier', 'courier', 'courier', 'courier', 1, 1, '2023-05-15 04:14:42', '2023-05-14 22:25:37');
+(1, 'Courier', 'http://127.0.0.1:8000', 'UTC', 'default_favicon.png', 'default_logo_photo.png', '01878136530', '01878136530', 'info@courier.com', 'support@courier.com', 'Dhaka, BD', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116834.13673771221!2d90.41928169999998!3d23.780636450000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1684726021424!5m2!1sen!2sbd\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 'courier', 'courier', 'courier', 'courier', 'courier', 1, 1, '2023-05-15 04:14:42', '2023-05-21 21:28:54');
 
 -- --------------------------------------------------------
 
@@ -306,7 +330,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2023_03_27_094347_create_sms_settings_table', 1),
 (14, '2023_03_28_064600_create_contact_messages_table', 1),
 (15, '2023_03_28_100719_create_courier_summaries_table', 1),
-(16, '2023_03_28_101117_create_courier_details_table', 1);
+(16, '2023_03_28_101117_create_courier_details_table', 1),
+(17, '2023_05_22_044456_create_about_us_table', 2),
+(18, '2023_05_22_045620_create_privacy_policies_table', 3),
+(19, '2023_05_22_050044_create_terms_of_services_table', 4);
 
 -- --------------------------------------------------------
 
@@ -338,6 +365,29 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `privacy_policies`
+--
+
+CREATE TABLE `privacy_policies` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `headline` text NOT NULL,
+  `description` longtext NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `privacy_policies`
+--
+
+INSERT INTO `privacy_policies` (`id`, `headline`, `description`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'On-time Delivery and Customer Satisfaction 1', 'On-time Delivery and Customer Satisfaction 1', 1, 1, '2023-05-21 22:57:35', '2023-05-22 00:04:29');
 
 -- --------------------------------------------------------
 
@@ -393,6 +443,29 @@ CREATE TABLE `sms_settings` (
 
 INSERT INTO `sms_settings` (`id`, `api_key`, `sender_id`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 'VjkIEblFGYFP7yH5NyOk', '8809601004416', 1, 1, '2023-05-15 04:14:42', '2023-05-14 22:25:56');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `terms_of_services`
+--
+
+CREATE TABLE `terms_of_services` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `headline` text NOT NULL,
+  `description` longtext NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `terms_of_services`
+--
+
+INSERT INTO `terms_of_services` (`id`, `headline`, `description`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'On-time Delivery and Customer Satisfaction 1', 'On-time Delivery and Customer Satisfaction 1', 1, 1, '2023-05-21 23:20:48', '2023-05-22 00:08:33');
 
 -- --------------------------------------------------------
 
@@ -483,7 +556,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone_number`, `gender`, `date_of_birth`, `address`, `profile_photo`, `last_active`, `role`, `branch_id`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'superadmin@email.com', '$2y$10$gfXTDxamlHRqQrbipcQUfu3gWT7WKzc.suB9BMK0f9yDL41OS0KIO', '01953321402', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-20 05:06:55', 'Super Admin', NULL, 'Active	', 'yeweH7I7xvaWHWYXh19Ye6XMYILDv5tezMAMab1XJqL2Kpy07ZeX4ATDEvD9', '2023-05-15 04:14:42', '2023-05-20 05:06:55'),
+(1, 'Super Admin', 'superadmin@email.com', '$2y$10$gfXTDxamlHRqQrbipcQUfu3gWT7WKzc.suB9BMK0f9yDL41OS0KIO', '01953321402', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-22 00:26:26', 'Super Admin', NULL, 'Active	', '33J58bZkBnp4fHWGcri2R1vbNBhAt5Z0YHPEC17DWoFmC2Dn4RKCWJJQS6sA', '2023-05-15 04:14:42', '2023-05-22 00:26:26'),
 (2, 'Admin', 'admin@email.com', '$2y$10$0yFx6jO3aoOGwY5SqUcoxOOeTiSLe79Of23fcRAD2u70Gzebc2HGi', '01878136530', 'Male', '2023-05-15', 'Jessore, BD', 'default_profile_photo.png', '2023-05-20 04:11:54', 'Admin', NULL, 'Active	', 'e8OvatTSFNMwM1in8kdaJbaJsmEE6HuHmGzjFiGSOC3uIJNCDrpdjJB5m0tr', '2023-05-15 04:14:42', '2023-05-20 04:11:54'),
 (3, 'Manager 1', 'manager1@email.com', '$2y$10$ZxntK5.zQjd.mZAG/rN3e.ONZUTzBEL6LTEhxXDrJWREYTmBdyPoO', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-20 04:45:36', 'Manager', 1, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-20 04:45:36'),
 (4, 'Manager 2', 'manager2@email.com', '$2y$10$Yv3fBtgfo9WNunTVzMSIietB9bEqX7mhFelN40PK3WWy1hisp5N9i', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-05-20 04:26:31', 'Manager', 2, 'Active	', NULL, '2023-05-15 04:14:42', '2023-05-20 04:26:31'),
@@ -495,6 +568,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone_number`, `gender`
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `about_us`
+--
+ALTER TABLE `about_us`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `branches`
@@ -573,6 +652,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `privacy_policies`
+--
+ALTER TABLE `privacy_policies`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
@@ -582,6 +667,12 @@ ALTER TABLE `services`
 -- Indexes for table `sms_settings`
 --
 ALTER TABLE `sms_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `terms_of_services`
+--
+ALTER TABLE `terms_of_services`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -606,6 +697,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `about_us`
+--
+ALTER TABLE `about_us`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `branches`
@@ -665,13 +762,19 @@ ALTER TABLE `mail_settings`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `privacy_policies`
+--
+ALTER TABLE `privacy_policies`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `services`
@@ -683,6 +786,12 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `sms_settings`
 --
 ALTER TABLE `sms_settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `terms_of_services`
+--
+ALTER TABLE `terms_of_services`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
