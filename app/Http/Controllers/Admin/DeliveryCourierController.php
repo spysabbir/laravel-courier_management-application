@@ -69,8 +69,8 @@ class DeliveryCourierController extends Controller
 
         // Send SMS
         $url = "https://bulksmsbd.net/api/smsapi";
-        $api_key = "VjkIEblFGYFP7yH5NyOk";
-        $senderid = "03590740020";
+        $api_key = env('SMS_API_KEY');
+        $senderid = env('SMS_SENDER_ID');
         $number = "$send_courier_summary->receiver_phone_number";
         $message = "Hello $send_courier_summary->receiver_name, your otp is $otp.";
         $data = [
@@ -207,8 +207,8 @@ class DeliveryCourierController extends Controller
                 ]);
                 // Send SMS
                 $url = "https://bulksmsbd.net/api/smsapi";
-                $api_key = "VjkIEblFGYFP7yH5NyOk";
-                $senderid = "03590740020";
+                $api_key = env('SMS_API_KEY');
+                $senderid = env('SMS_SENDER_ID');
                 $number = "$courier_summary->receiver_phone_number";
                 $message = "Hello $courier_summary->receiver_name, your courier is received in $branch->branch_name. Your tracking id is $courier_summary->tracking_id and courier delivery otp number is $otp . Please save this message and collect your courier.";
                 $data = [

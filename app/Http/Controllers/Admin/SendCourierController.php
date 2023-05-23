@@ -103,8 +103,8 @@ class SendCourierController extends Controller
 
             // Send SMS
             $url = "https://bulksmsbd.net/api/smsapi";
-            $api_key = "VjkIEblFGYFP7yH5NyOk";
-            $senderid = "03590740020";
+            $api_key = env('SMS_API_KEY');
+            $senderid = env('SMS_SENDER_ID');
             $number = "$request->receiver_phone_number";
             $message = "Hello $request->sender_name, your courier is processing. Your tracking id is $tracking_id. Save this message if you want to know your status.";
             $data = [
