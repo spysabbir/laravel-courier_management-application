@@ -57,9 +57,11 @@ For Admin:-
 Email: admin@email.com
 For Manager:- 
 Email: manager1@email.com
+Email: manager2@email.com
 For Staff:- 
 Email: staff1@email.com
-Password: 123456789
+Email: staff2@email.com
+Password: 12345678
 ``` 
 
 ## Contributing
