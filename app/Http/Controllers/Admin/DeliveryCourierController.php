@@ -120,6 +120,45 @@ class DeliveryCourierController extends Controller
         }
     }
 
+    public function deliveryCourierList(Request $request)
+    {
+        if($request->ajax()){
+            $courier_summaries = "";
+            $query = CourierSummary::leftJoin('branches', 'courier_summaries.sender_branch_id', 'branches.id')
+                    ->where('delivery_agent_id', Auth::user()->id);
+
+            if($request->courier_status){
+                $query->where('courier_summaries.courier_status', $request->courier_status);
+            }
+
+            $courier_summaries = $query->select('courier_summaries.*', 'branches.branch_name')->get();
+
+            return DataTables::of($courier_summaries)
+            ->addIndexColumn()
+            ->editColumn('courier_status', function($row){
+                if($row->courier_status == 'Processing'){
+                    $courier_status = '
+                    <span class="badge bg-warning">'.$row->courier_status.'</span>
+                    ';
+                }else{
+                    $courier_status = '
+                    <span class="badge bg-success">'.$row->courier_status.'</span>
+                    ';
+                };
+                return $courier_status;
+            })
+            ->addColumn('action', function ($row) {
+                $btn = '
+                    <button type="button" data-id="'.$row->id.'" class="btn btn-success btn-sm viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal"><i class="bi bi-eye"></i></button>
+                ';
+                return $btn;
+            })
+            ->rawColumns(['courier_status', 'action'])
+            ->make(true);
+        }
+        return view('admin.delivery_courier.list');
+    }
+
     public function processingCourierList(Request $request)
     {
         if($request->ajax()){

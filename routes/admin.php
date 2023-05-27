@@ -152,17 +152,20 @@ Route::prefix('admin')->group(function () {
         Route::get('/delivery/courier/list/processing', [DeliveryCourierController::class, 'processingCourierList'])->name('delivery.courier.list.processing');
         Route::get('/delivery/courier/list/delivered', [DeliveryCourierController::class, 'deliveredCourierList'])->name('delivery.courier.list.delivered');
         Route::post('/change/shipped/courier/status', [DeliveryCourierController::class, 'changeShippedCourierStatus'])->name('change.shipped.courier.status');
+
         // Staff
         Route::get('/send/courier', [SendCourierController::class, 'sendCourier'])->name('send.courier');
         Route::post('/get/cost/rate', [SendCourierController::class, 'getCostRate'])->name('get.cost.rate');
         Route::post('/get/sender/info', [SendCourierController::class, 'getSenderInfo'])->name('get.sender.info');
         Route::post('/send/courier/post', [SendCourierController::class, 'sendCourierPost'])->name('send.courier.post');
         Route::get('/send/courier/invoice/{id}', [SendCourierController::class, 'sendCourierInvoice'])->name('send.courier.invoice');
+        Route::get('/send/courier/list', [SendCourierController::class, 'sendCourierList'])->name('send.courier.list');
 
         Route::get('/delivery/courier', [DeliveryCourierController::class, 'deliveryCourier'])->name('delivery.courier');
         Route::get('/edit/delivery/courier/status/{id}', [DeliveryCourierController::class, 'editDeliveryCourierStatus'])->name('edit.delivery.courier.status');
         Route::get('/resend/otp/{id}', [DeliveryCourierController::class, 'resendOtp'])->name('resend.otp');
         Route::put('/update/delivery/courier/status/{id}', [DeliveryCourierController::class, 'updateDeliveryCourierStatus'])->name('update.delivery.courier.status');
+        Route::get('/delivery/courier/list', [DeliveryCourierController::class, 'deliveryCourierList'])->name('delivery.courier.list');
 
     });
 });
