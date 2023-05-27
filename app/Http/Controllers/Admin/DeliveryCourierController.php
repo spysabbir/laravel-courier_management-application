@@ -150,6 +150,7 @@ class DeliveryCourierController extends Controller
             ->addColumn('action', function ($row) {
                 $btn = '
                     <button type="button" data-id="'.$row->id.'" class="btn btn-success btn-sm viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal"><i class="bi bi-eye"></i></button>
+                    <a href="'.route('courier.invoice', $row->id).'" class="btn btn-info btn-sm"><i class="bi bi-download"></i></a>
                 ';
                 return $btn;
             })
@@ -195,6 +196,7 @@ class DeliveryCourierController extends Controller
             ->addColumn('action', function ($row) {
                 $btn = '
                 <button type="button" data-id="'.$row->id.'" class="btn btn-success btn-sm viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal"><i class="bi bi-eye"></i></button>
+                <a href="'.route('courier.invoice', $row->id).'" class="btn btn-info btn-sm"><i class="bi bi-download"></i></a>
                 ';
                 return $btn;
             })
@@ -223,6 +225,7 @@ class DeliveryCourierController extends Controller
             ->addColumn('action', function ($row) {
                 $btn = '
                 <button type="button" data-id="'.$row->id.'" class="btn btn-success btn-sm viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal"><i class="bi bi-eye"></i></button>
+                <a href="'.route('courier.invoice', $row->id).'" class="btn btn-info btn-sm"><i class="bi bi-download"></i></a>
                 ';
                 return $btn;
             })

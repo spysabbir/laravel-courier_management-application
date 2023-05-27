@@ -156,13 +156,13 @@
     <li class="menu-label">Staff Panel</li>
     <li>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bi bi-gift"></i>
+            <div class="parent-icon"><i class="bi bi-arrow-right-square-fill"></i>
             </div>
             <div class="menu-title">Send Courier</div>
         </a>
         <ul>
             <li>
-                <a href="{{ route('send.courier') }}"><i class="bi bi-arrow-right-square-fill"></i>Send Courier</a>
+                <a href="{{ route('send.courier') }}"><i class="bi bi-cursor-fill"></i>Send Courier</a>
             </li>
             <li>
                 <a href="{{ route('send.courier.list') }}"><i class="bi bi-card-checklist"></i>Courier List</a>
@@ -171,13 +171,13 @@
     </li>
     <li>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bi bi-gift"></i>
+            <div class="parent-icon"><i class="bi bi-sort-down-alt"></i>
             </div>
             <div class="menu-title">Delivery Courier</div>
         </a>
         <ul>
             <li>
-                <a href="{{ route('delivery.courier') }}"><i class="bi bi-sort-down-alt"></i>Delivery Courier</a>
+                <a href="{{ route('delivery.courier') }}"><i class="bi bi-gift"></i>Delivery Courier</a>
             </li>
             <li>
                 <a href="{{ route('delivery.courier.list') }}"><i class="bi bi-card-checklist"></i>Courier List</a>

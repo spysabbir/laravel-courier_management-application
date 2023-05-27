@@ -122,15 +122,12 @@ class SendCourierController extends Controller
             $response = curl_exec($ch);
             curl_close($ch);
             // return $response;
-        }
-    }
 
-    public function sendCourierInvoice($id)
-    {
-        $default_setting = DefaultSetting::first();
-        $courier_summary = CourierSummary::where('id', $id)->first();
-        $courier_details = CourierDetails::where('courier_summary_id', $id)->get();
-        return view('admin.send_courier.invoice', compact('courier_summary', 'courier_details', 'default_setting'));
+            return response()->json([
+                'status' => 200,
+                'courier_summary_id'=> $courier_summary_id
+            ]);
+        }
     }
 
     public function sendCourierList(Request $request)
@@ -163,6 +160,7 @@ class SendCourierController extends Controller
             ->addColumn('action', function ($row) {
                 $btn = '
                     <button type="button" data-id="'.$row->id.'" class="btn btn-success btn-sm viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal"><i class="bi bi-eye"></i></button>
+                    <a href="'.route('courier.invoice', $row->id).'" class="btn btn-info btn-sm"><i class="bi bi-download"></i></a>
                 ';
                 return $btn;
             })
@@ -208,7 +206,8 @@ class SendCourierController extends Controller
             ->addColumn('action', function ($row) {
                 $btn = '
                     <button type="button" data-id="'.$row->id.'" class="btn btn-success btn-sm viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal"><i class="bi bi-eye"></i></button>
-                ';
+                    <a href="'.route('courier.invoice', $row->id).'" class="btn btn-info btn-sm"><i class="bi bi-download"></i></a>
+                    ';
                 return $btn;
             })
             ->rawColumns(['checkbox', 'courier_status', 'action'])
@@ -235,20 +234,15 @@ class SendCourierController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $btn = '
-                <button type="button" data-id="'.$row->id.'" class="btn btn-success btn-sm viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal"><i class="bi bi-eye"></i></button>                ';
+                <button type="button" data-id="'.$row->id.'" class="btn btn-success btn-sm viewBtn" data-bs-toggle="modal" data-bs-target="#viewModal"><i class="bi bi-eye"></i></button>
+                <a href="'.route('courier.invoice', $row->id).'" class="btn btn-info btn-sm"><i class="bi bi-download"></i></a>
+                ';
                 return $btn;
             })
             ->rawColumns(['action'])
             ->make(true);
         }
         return view('admin.send_courier.delivered_list');
-    }
-
-    public function courierDetailsView($id)
-    {
-        $courier_summary = CourierSummary::where('id', $id)->first();
-        $courier_details =  CourierDetails::where('courier_summary_id', $id)->get();
-        return view('admin.send_courier.view', compact('courier_summary', 'courier_details'));
     }
 
     public function changeOnTheWayCourierStatus(Request $request)
@@ -261,5 +255,20 @@ class SendCourierController extends Controller
                 'status' => 400,
             ]);
         }
+    }
+
+    public function courierDetailsView($id)
+    {
+        $courier_summary = CourierSummary::where('id', $id)->first();
+        $courier_details =  CourierDetails::where('courier_summary_id', $id)->get();
+        return view('admin.send_courier.view', compact('courier_summary', 'courier_details'));
+    }
+
+    public function courierInvoice($id)
+    {
+        $default_setting = DefaultSetting::first();
+        $courier_summary = CourierSummary::where('id', $id)->first();
+        $courier_details = CourierDetails::where('courier_summary_id', $id)->get();
+        return view('admin.send_courier.invoice', compact('courier_summary', 'courier_details', 'default_setting'));
     }
 }

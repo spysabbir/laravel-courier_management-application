@@ -338,10 +338,14 @@
                         $.each(response.error, function(prefix, val){
                             $('span.'+prefix+'_error').text(val[0]);
                         })
-                        // toastr.error('Item details field is required.');
                     }else{
                         $('#sendCourierForm')[0].reset();
                         toastr.success('Send courier successfully.');
+
+                        var id = response.courier_summary_id;
+                        var url = "{{ route('courier.invoice', ':id') }}";
+                        url = url.replace(':id', id);
+                        window.location.href = url;
                     }
                 },
             });

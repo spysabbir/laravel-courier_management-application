@@ -147,7 +147,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/send/courier/list/processing', [SendCourierController::class, 'processingCourierList'])->name('send.courier.list.processing');
         Route::get('/send/courier/list/delivered', [SendCourierController::class, 'deliveredCourierList'])->name('send.courier.list.delivered');
         Route::post('/change/on_the_way/courier/status', [SendCourierController::class, 'changeOnTheWayCourierStatus'])->name('change.on_the_way.courier.status');
+
         Route::get('/courier/details/view/{id}', [SendCourierController::class, 'courierDetailsView'])->name('courier.details.view');
+        Route::get('/courier/invoice/{id}', [SendCourierController::class, 'courierInvoice'])->name('courier.invoice');
 
         Route::get('/delivery/courier/list/processing', [DeliveryCourierController::class, 'processingCourierList'])->name('delivery.courier.list.processing');
         Route::get('/delivery/courier/list/delivered', [DeliveryCourierController::class, 'deliveredCourierList'])->name('delivery.courier.list.delivered');
@@ -158,7 +160,6 @@ Route::prefix('admin')->group(function () {
         Route::post('/get/cost/rate', [SendCourierController::class, 'getCostRate'])->name('get.cost.rate');
         Route::post('/get/sender/info', [SendCourierController::class, 'getSenderInfo'])->name('get.sender.info');
         Route::post('/send/courier/post', [SendCourierController::class, 'sendCourierPost'])->name('send.courier.post');
-        Route::get('/send/courier/invoice/{id}', [SendCourierController::class, 'sendCourierInvoice'])->name('send.courier.invoice');
         Route::get('/send/courier/list', [SendCourierController::class, 'sendCourierList'])->name('send.courier.list');
 
         Route::get('/delivery/courier', [DeliveryCourierController::class, 'deliveryCourier'])->name('delivery.courier');
