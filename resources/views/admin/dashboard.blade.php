@@ -3,6 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content')
+
+@if (session('info'))
+<div class="alert alert-warning">
+    <strong>{{ session('info') }}</strong>
+</div>
+@endif
+
 <div class="row">
     <div class="col-12 col-lg-12 col-xl-6 d-flex">
         <div class="card radius-10 w-100">
