@@ -15,7 +15,7 @@
         @php
             $total = 0;
         @endphp
-    @foreach($income_summaries as $summary)
+        @foreach($income_summaries as $summary)
         <tr>
             <td>{{ $loop->index+1}}</td>
             <td>{{ $summary->tracking_id }}</td>
@@ -29,10 +29,10 @@
         @php
             $total += $summary->grand_total;
         @endphp
-    @endforeach
+        @endforeach
         <tr>
-            <td>Total</td>
-            <td colspan="4">{{ $total }}</td>
+            <td class="text-center" colspan="4">Total</td>
+            <td>{{ $total }}</td>
         </tr>
     </tbody>
 </table>

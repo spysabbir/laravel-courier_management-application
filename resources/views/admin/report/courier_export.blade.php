@@ -5,7 +5,7 @@
         <th>Tracking Id</th>
         <th>Sender Branch</th>
         <th>Receiver Branch</th>
-        <th>Grand Total</th>
+        <th>Payment Amount</th>
         <th>Payment Status</th>
         <th>Courier Status</th>
         <th>Date</th>
@@ -15,7 +15,7 @@
         @php
             $total = 0;
         @endphp
-    @foreach($courier_summaries as $summary)
+        @foreach($courier_summaries as $summary)
         <tr>
             <td>{{ $loop->index+1}}</td>
             <td>{{ $summary->tracking_id }}</td>
@@ -29,10 +29,10 @@
         @php
             $total += $summary->grand_total;
         @endphp
-    @endforeach
+        @endforeach
         <tr>
-            <td>Total:</td>
-            <td colspan="4">{{ $total }}</td>
+            <td colspan="4">Total:</td>
+            <td>{{ $total }}</td>
         </tr>
     </tbody>
 </table>

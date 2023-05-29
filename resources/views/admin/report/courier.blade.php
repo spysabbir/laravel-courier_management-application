@@ -70,6 +70,7 @@
                                 <th>Sender Type</th>
                                 <th>Sender Branch Name</th>
                                 <th>Receiver Branch Name</th>
+                                <th>Payment Amount</th>
                                 <th>Payment Status</th>
                                 <th>Courier Status</th>
                                 <th>Action</th>
@@ -132,6 +133,7 @@
                 { data: 'sender_type', name: 'sender_type' },
                 { data: 'sender_branch_name', name: 'sender_branch_name' },
                 { data: 'receiver_branch_name', name: 'receiver_branch_name' },
+                { data: 'grand_total', name: 'grand_total' },
                 { data: 'payment_status', name: 'payment_status' },
                 { data: 'courier_status', name: 'courier_status' },
                 { data: 'action', name: 'action', orderable: false, searchable: false }

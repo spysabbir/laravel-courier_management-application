@@ -62,14 +62,14 @@ class ReportController extends Controller
             ->make(true);
         }
 
-        $branches = Branch::whereStatus('Active')->get();
+        $branches = Branch::all();
 
         return view('admin.report.courier', compact('branches'));
     }
 
     public function reportCourierPrint(Request $request)
     {
-        if ($request->ajax()) {
+        if($request->ajax()) {
             $courier_summaries = "";
             $query = CourierSummary::select('courier_summaries.*');
 
@@ -105,6 +105,7 @@ class ReportController extends Controller
 
             $courier_summaries = $query->get();
         }
+
         return view('admin.report.courier_print', compact('courier_summaries', 'sender_branch_id', 'receiver_branch_id', 'courier_status', 'payment_status', 'created_at_start', 'created_at_end'));
     }
 
