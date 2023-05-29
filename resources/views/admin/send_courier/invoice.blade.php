@@ -9,7 +9,7 @@
     <meta name="author" content="Laralink">
     <!-- Site Title -->
     <link rel="icon" href="{{ asset('uploads/default_photo') }}/{{ $default_setting->favicon }}" type="image/png" />
-    <title>{{ env('APP_NAME') }} || Invoice</title>
+    <title>{{ env('APP_NAME') }} || Invoice - {{ $courier_summary->id }}</title>
     <link rel="stylesheet" href="{{ asset('admin') }}/invoice/style.css">
 </head>
 
@@ -23,15 +23,14 @@
                             <div class="tm_logo"><img src="{{ asset('uploads/default_photo') }}/{{ $default_setting->logo_photo }}" alt="Logo"></div>
                         </div>
                         <div class="tm_invoice_right tm_text_right tm_mobile_hide">
-                            <div class="tm_f50 tm_text_uppercase tm_white_color">Invoice - {{ $courier_summary->id }}</div>
+                            <div class="tm_f50 tm_text_uppercase tm_white_color">Tracking Id - {{ $courier_summary->tracking_id }}</div>
                         </div>
                         <div class="tm_shape_bg tm_accent_bg tm_mobile_hide"></div>
                     </div>
                     <div class="tm_invoice_info tm_mb25">
                         <div class="tm_card_note tm_mobile_hide"><b class="tm_primary_color">Courier Status: </b>{{ $courier_summary->courier_status }}</div>
                         <div class="tm_invoice_info_list tm_white_color">
-                            <p class="tm_invoice_number tm_m0">Tracking Id: <b>#{{ $courier_summary->tracking_id }}</b></p>
-                            <p class="tm_invoice_date tm_m0">Date: <b>{{ $courier_summary->created_at }}</b></p>
+                            <p class="tm_invoice_date tm_m0">Date: <b>{{ $courier_summary->created_at->format('D d,M-Y h:m:s A') }}</b></p>
                         </div>
                         <div class="tm_invoice_seperator tm_accent_bg"></div>
                     </div>
@@ -39,19 +38,19 @@
                         <div class="tm_invoice_left">
                         <p class="tm_mb2"><b class="tm_primary_color">From:</b></p>
                         <p>
+                            <strong class="text-inverse">Branch: {{ $courier_summary->relationtosenderbranch->branch_name }} </strong><br>
                             <strong class="text-inverse">Name: {{ $courier_summary->sender_name }} </strong><br>
                             Address: {{ $courier_summary->sender_address }} <br>
                             Phone: {{ $courier_summary->sender_phone_number }} <br>
-                            Email: {{ $courier_summary->sender_email }} <br>
                         </p>
                         </div>
                         <div class="tm_invoice_right tm_text_right">
                         <p class="tm_mb2"><b class="tm_primary_color">To:</b></p>
                         <p>
+                            <strong class="text-inverse">Branch: {{ $courier_summary->relationtoreceiverbranch->branch_name }} </strong><br>
                             <strong class="text-inverse">Name: {{ $courier_summary->receiver_name }}</strong><br>
                             Address: {{ $courier_summary->receiver_address }}<br>
                             Phone: {{ $courier_summary->receiver_phone_number }}<br>
-                            Email: {{ $courier_summary->receiver_email }}<br>
                         </p>
                         </div>
                     </div>
@@ -89,20 +88,27 @@
                                 <table class="tm_mb15">
                                     <tbody>
                                         <tr class="tm_accent_bg">
-                                            <td class="tm_width_3 tm_border_top_0 tm_bold tm_f16 tm_white_color">Grand Total	</td>
+                                            <td class="tm_width_3 tm_border_top_0 tm_bold tm_f16 tm_white_color">Grand Total</td>
                                             <td class="tm_width_3 tm_border_top_0 tm_bold tm_f16 tm_white_color tm_text_right">{{ $courier_summary->grand_total }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        <div class="tm_note tm_text_center tm_font_style_normal">
+                            <hr class="tm_mb15">
+                            <p class="tm_mb2"><b class="tm_primary_color">Special Note:</b></p>
+                            <p class="tm_m0">{{ $courier_summary->special_comment }}</p>
+                            <hr class="tm_mb15">
+                        </div><!-- .tm_note -->
                         <div class="tm_invoice_footer tm_type1">
                             <div class="tm_left_footer"></div>
                                 <div class="tm_right_footer">
                                     <div class="tm_sign tm_text_center">
-                                    <img src="{{ asset('admin') }}/invoice/sign.svg" alt="Sign">
-                                    <p class="tm_m0 tm_ternary_color">Jhon Donate</p>
-                                    <p class="tm_m0 tm_f16 tm_primary_color">Accounts Manager</p>
+                                    <p class="tm_m0 tm_primary_color"><strong>{{ env('APP_NAME') }}</strong></p>
+                                    <p class="tm_m0 tm_f16 tm_primary_color">{{ $default_setting->support_phone }}</p>
+                                    <p class="tm_m0 tm_f16 tm_primary_color">{{ $default_setting->support_email }}</p>
+                                    <p class="tm_m0 tm_f16 tm_primary_color">{{ env('APP_URL') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +116,7 @@
                     <div class="tm_note tm_text_center tm_font_style_normal">
                         <hr class="tm_mb15">
                         <p class="tm_mb2"><b class="tm_primary_color">Terms & Conditions:</b></p>
-                        <p class="tm_m0">All claims relating to quantity or shipping errors shall be waived by Buyer unless made in writing to <br>Seller within thirty (30) days after delivery of goods to the address stated.</p>
+                        <p class="tm_m0">All claims relating to shipping errors shall be waived by customer unless made within (7) days after delivery of goods to the address stated.</p>
                     </div><!-- .tm_note -->
                 </div>
             </div>

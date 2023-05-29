@@ -38,11 +38,6 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::middleware('auth')->group(function () {
-        Route::get('verify-email', EmailVerificationPromptController::class)->name('verification.notice');
-        Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)->name('verification.verify')
-                    ->middleware(['signed', 'throttle:6,1']);
-        Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->name('verification.send')
-                    ->middleware('throttle:6,1');
 
         Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
         Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
@@ -51,13 +46,11 @@ Route::prefix('admin')->group(function () {
 
         Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard')
-                    ->middleware(['verified']);
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'profileUpdate'])->name('profile.update');
         Route::put('/password', [ProfileController::class, 'passwordUpdate'])->name('password.update');
-
 
         // Super Admin
         Route::middleware('role:Super Admin')->group(function () {
@@ -89,7 +82,7 @@ Route::prefix('admin')->group(function () {
         });
 
         // Admin
-        Route::middleware(['role:Super Admin, Admin'])->group(function () {
+        Route::middleware(['role:Super Admin,Admin'])->group(function () {
             Route::resource('branch', BranchController::class);
             Route::get('/branch-recycle', [BranchController::class, 'recycle'])->name('branch.recycle');
             Route::get('/branch/status/{id}', [BranchController::class, 'status'])->name('branch.status');
