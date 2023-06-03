@@ -21,6 +21,7 @@ class DefaultSettingTableSeeder extends Seeder
             'favicon' => 'default_favicon.png',
             'logo_photo' => 'default_logo_photo.png',
             'created_by' => 1,
+            'created_at' => Carbon::now(),
         ]);
     }
 }

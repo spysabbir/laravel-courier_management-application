@@ -22,18 +22,23 @@ class ReportController extends Controller
             if($request->sender_branch_id){
                 $query->where('courier_summaries.sender_branch_id', $request->sender_branch_id);
             }
+
             if($request->receiver_branch_id){
                 $query->where('courier_summaries.receiver_branch_id', $request->receiver_branch_id);
             }
+
             if($request->courier_status){
                 $query->where('courier_summaries.courier_status', $request->courier_status);
             }
+
             if($request->payment_status){
                 $query->where('courier_summaries.payment_status', $request->payment_status);
             }
+
             if($request->created_at_start){
                 $query->whereDate('courier_summaries.created_at', '>=', $request->created_at_start);
             }
+
             if($request->created_at_end){
                 $query->whereDate('courier_summaries.created_at', '<=', $request->created_at_end);
             }
@@ -73,40 +78,52 @@ class ReportController extends Controller
             $courier_summaries = "";
             $query = CourierSummary::select('courier_summaries.*');
 
-            $sender_branch_id = $request->sender_branch_id;
             if($request->sender_branch_id){
                 $query->where('courier_summaries.sender_branch_id', $request->sender_branch_id);
+                $sender_branch_name = $request->sender_branch_id;
+            }else{
+                $sender_branch_name = "All";
             }
 
-            $receiver_branch_id = $request->receiver_branch_id;
             if($request->receiver_branch_id){
                 $query->where('courier_summaries.receiver_branch_id', $request->receiver_branch_id);
+                $receiver_branch_name = $request->receiver_branch_id;
+            }else{
+                $receiver_branch_name = "All";
             }
 
-            $courier_status = $request->courier_status;
             if($request->courier_status){
                 $query->where('courier_summaries.courier_status', $request->courier_status);
+                $courier_status = $request->courier_status;
+            }else{
+                $courier_status = "All";
             }
 
-            $payment_status = $request->payment_status;
             if($request->payment_status){
                 $query->where('courier_summaries.payment_status', $request->payment_status);
+                $payment_status = $request->payment_status;
+            }else{
+                $payment_status = "All";
             }
 
-            $created_at_start = $request->created_at_start;
             if($request->created_at_start){
                 $query->whereDate('courier_summaries.created_at', '>=', $request->created_at_start);
+                $created_at_start = $request->created_at_start;
+            }else{
+                $created_at_start = "All";
             }
 
-            $created_at_end = $request->created_at_end;
             if($request->created_at_end){
                 $query->whereDate('courier_summaries.created_at', '<=', $request->created_at_end);
+                $created_at_end = $request->created_at_end;
+            }else{
+                $created_at_end = "All";
             }
 
             $courier_summaries = $query->get();
         }
 
-        return view('admin.report.courier_print', compact('courier_summaries', 'sender_branch_id', 'receiver_branch_id', 'courier_status', 'payment_status', 'created_at_start', 'created_at_end'));
+        return view('admin.report.courier_print', compact('courier_summaries', 'sender_branch_name', 'receiver_branch_name', 'courier_status', 'payment_status', 'created_at_start', 'created_at_end'));
     }
 
     public function reportCourierExport(Request $request)
@@ -117,18 +134,23 @@ class ReportController extends Controller
         if($request->sender_branch_id){
             $query->where('courier_summaries.sender_branch_id', $request->sender_branch_id);
         }
+
         if($request->receiver_branch_id){
             $query->where('courier_summaries.receiver_branch_id', $request->receiver_branch_id);
         }
+
         if($request->courier_status){
             $query->where('courier_summaries.courier_status', $request->courier_status);
         }
+
         if($request->payment_status){
             $query->where('courier_summaries.payment_status', $request->payment_status);
         }
+
         if($request->created_at_start){
             $query->whereDate('courier_summaries.created_at', '>=', $request->created_at_start);
         }
+
         if($request->created_at_end){
             $query->whereDate('courier_summaries.created_at', '<=', $request->created_at_end);
         }
@@ -151,9 +173,11 @@ class ReportController extends Controller
             //     $query->where('courier_summaries.payment_type', "Sender Payment")->where('courier_summaries.sender_branch_id', $request->branch_id);
             // };
 
+
             if($request->created_at_start){
                 $query->whereDate('courier_summaries.created_at', '>=', $request->created_at_start);
             }
+
             if($request->created_at_end){
                 $query->whereDate('courier_summaries.created_at', '<=', $request->created_at_end);
             }
@@ -201,13 +225,19 @@ class ReportController extends Controller
             //     $query->where('courier_summaries.payment_type', "Receiver Payment")->where('courier_summaries.receiver_branch_id', $request->branch_id)->where('courier_summaries.sender_branch_id', $request->branch_id);
             //     $query->where('courier_summaries.payment_type', "Sender Payment")->where('courier_summaries.sender_branch_id', $request->branch_id);
             // };
-            $created_at_start = $request->created_at_start;
+
             if($request->created_at_start){
                 $query->whereDate('courier_summaries.created_at', '>=', $request->created_at_start);
+                $created_at_start = $request->created_at_start;
+            }else{
+                $created_at_start = 'All';
             }
-            $created_at_end = $request->created_at_end;
+
             if($request->created_at_end){
                 $query->whereDate('courier_summaries.created_at', '<=', $request->created_at_end);
+                $created_at_end = $request->created_at_end;
+            }else{
+                $created_at_end = 'All';
             }
 
             $income_summaries = $query->select('courier_summaries.*')->get();
@@ -229,6 +259,7 @@ class ReportController extends Controller
         if($request->created_at_start){
             $query->whereDate('courier_summaries.created_at', '>=', $request->created_at_start);
         }
+
         if($request->created_at_end){
             $query->whereDate('courier_summaries.created_at', '<=', $request->created_at_end);
         }

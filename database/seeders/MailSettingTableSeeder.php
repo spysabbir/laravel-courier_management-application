@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\MailSetting;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -22,6 +23,7 @@ class MailSettingTableSeeder extends Seeder
             'encryption' => 'tls',
             'from_address' => 'info@gmail.com',
             'created_by' => 1,
+            'created_at' => Carbon::now(),
         ]);
     }
 }

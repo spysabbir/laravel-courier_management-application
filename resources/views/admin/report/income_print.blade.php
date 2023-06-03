@@ -3,9 +3,9 @@
         <h4 class="text-center">{{ env('APP_NAME') }}</h4>
         <h4 class="text-center">Income Summary Report</h4>
         <div class="my-3 d-flex justify-content-between">
-            {{-- <p class="card-text">Branch Name: {{ ($branch_id) ? App\Models\Branch::find($branch_id)->branch_name : "N/A" }}</p> --}}
-            <span class="card-text">Order Start Start: {{ ($created_at_start) ? $created_at_start : "N/A" }}</span>
-            <span class="card-text">Order End Date: {{ ($created_at_end) ? $created_at_end : "N/A" }}</span>
+            {{-- <p class="card-text">Branch Name: {{ $branch_name }}</p> --}}
+            <span class="card-text">Order Start Date: {{ $created_at_start }}</span>
+            <span class="card-text">Order End Date: {{ $created_at_end }}</span>
         </div>
     </div>
     <div class="card-body">

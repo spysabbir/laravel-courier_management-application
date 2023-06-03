@@ -76,7 +76,7 @@
             ajax: {
                 url: "{{ route('report.income') }}",
                 "data":function(e){
-                    e.branch_id = $('#branch_id').val();
+                    // e.branch_id = $('#branch_id').val();
                     e.created_at_start = $('#created_at_start').val();
                     e.created_at_end = $('#created_at_end').val();
                 },
@@ -101,7 +101,7 @@
                 url: "{{ route('report.income.print') }}",
                 method: 'GET',
                 data: {
-                    branch_id : $('#branch_id').val(),
+                    // branch_id : $('#branch_id').val(),
                     created_at_start : $('#created_at_start').val(),
                     created_at_end : $('#created_at_end').val(),
                     },
