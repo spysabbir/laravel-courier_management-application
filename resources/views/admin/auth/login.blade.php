@@ -50,6 +50,54 @@
                     </div>
                 </div>
             </div>
+
+            <div class="demo mt-2">
+                <h5 class="text-center">Demo User Details</h5>
+                <div class="table-responsive">
+                    <table class="table table-primary">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>superadmin@email.com</td>
+                                <td>12345678</td>
+                                <td>Super Admin</td>
+                            </tr>
+                            <tr>
+                                <td>admin@email.com</td>
+                                <td>12345678</td>
+                                <td>Admin</td>
+                            </tr>
+                            <tr>
+                                <td>manager1@email.com</td>
+                                <td>12345678</td>
+                                <td>Manager</td>
+                            </tr>
+                            <tr>
+                                <td>manager2@email.com</td>
+                                <td>12345678</td>
+                                <td>Manager</td>
+                            </tr>
+                            <tr>
+                                <td>staff1@email.com</td>
+                                <td>12345678</td>
+                                <td>Staff</td>
+                            </tr>
+                            <tr>
+                                <td>staff2@email.com</td>
+                                <td>12345678</td>
+                                <td>Staff</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </form>
     </div>
 </div>
