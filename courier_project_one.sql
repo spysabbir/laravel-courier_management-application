@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 08:26 AM
+-- Generation Time: Jun 24, 2023 at 08:42 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -556,12 +556,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone_number`, `gender`, `date_of_birth`, `address`, `profile_photo`, `last_active`, `role`, `branch_id`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'superadmin@email.com', '$2y$10$gfXTDxamlHRqQrbipcQUfu3gWT7WKzc.suB9BMK0f9yDL41OS0KIO', '01953321402', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-22 00:26:26', 'Super Admin', NULL, 'Active', '33J58bZkBnp4fHWGcri2R1vbNBhAt5Z0YHPEC17DWoFmC2Dn4RKCWJJQS6sA', '2023-05-15 04:14:42', '2023-05-22 00:26:26'),
-(2, 'Admin', 'admin@email.com', '$2y$10$0yFx6jO3aoOGwY5SqUcoxOOeTiSLe79Of23fcRAD2u70Gzebc2HGi', '01878136530', 'Male', '2023-05-15', 'Jessore, BD', 'default_profile_photo.png', '2023-05-20 04:11:54', 'Admin', NULL, 'Active', 'e8OvatTSFNMwM1in8kdaJbaJsmEE6HuHmGzjFiGSOC3uIJNCDrpdjJB5m0tr', '2023-05-15 04:14:42', '2023-05-20 04:11:54'),
-(3, 'Manager 1', 'manager1@email.com', '$2y$10$ZxntK5.zQjd.mZAG/rN3e.ONZUTzBEL6LTEhxXDrJWREYTmBdyPoO', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-20 04:45:36', 'Manager', 1, 'Active', NULL, '2023-05-15 04:14:42', '2023-05-20 04:45:36'),
+(1, 'Super Admin', 'superadmin@email.com', '$2y$10$gfXTDxamlHRqQrbipcQUfu3gWT7WKzc.suB9BMK0f9yDL41OS0KIO', '01953321402', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-06-23 23:04:13', 'Super Admin', NULL, 'Active', 'iTzmj3OGhF8YsCmBmuPfGOYy79BMdU7a8RFfpQs89O4Us1qHqJ5RtJGw7I7M', '2023-05-15 04:14:42', '2023-06-23 23:04:13'),
+(2, 'Admin', 'admin@email.com', '$2y$10$0yFx6jO3aoOGwY5SqUcoxOOeTiSLe79Of23fcRAD2u70Gzebc2HGi', '01878136530', 'Male', '2023-05-15', 'Jessore, BD', 'default_profile_photo.png', '2023-06-23 23:04:31', 'Admin', NULL, 'Active', 'cKLIDIB8XJZH5X0KcbWAp9n7esTt0bd2t3dGGtfJF2L9YHScRjESoTyx1NEO', '2023-05-15 04:14:42', '2023-06-23 23:04:31'),
+(3, 'Manager 1', 'manager1@email.com', '$2y$10$ZxntK5.zQjd.mZAG/rN3e.ONZUTzBEL6LTEhxXDrJWREYTmBdyPoO', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-06-24 00:41:37', 'Manager', 1, 'Active', NULL, '2023-05-15 04:14:42', '2023-06-24 00:41:37'),
 (4, 'Manager 2', 'manager2@email.com', '$2y$10$Yv3fBtgfo9WNunTVzMSIietB9bEqX7mhFelN40PK3WWy1hisp5N9i', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-05-20 04:26:31', 'Manager', 2, 'Active', NULL, '2023-05-15 04:14:42', '2023-05-20 04:26:31'),
 (5, 'Staff 1', 'staff1@email.com', '$2y$10$BtzkUCp6mk6Z8D2Bv9MLd.5b7yWR/ZoqpSddVRHsrq50JTFUUEcmu', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-20 04:55:48', 'Staff', 1, 'Active', 'vJ037wFHmNdfJFlhWpT1C5nP4bTCv8xN9mp4WiyJOHOZ6zr7ox7CNjb7qW0z', '2023-05-15 04:14:42', '2023-05-20 04:55:48'),
-(6, 'Staff 2', 'staff2@email.com', '$2y$10$g1suCd7rijpTTOM0xeUBzeP0ElpvRceIYXeADRBplpQZGWGS.G0g.', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-05-20 04:56:45', 'Staff', 2, 'Active', NULL, '2023-05-15 04:14:42', '2023-05-20 04:56:45'),
+(6, 'Staff 2', 'staff2@email.com', '$2y$10$g1suCd7rijpTTOM0xeUBzeP0ElpvRceIYXeADRBplpQZGWGS.G0g.', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-06-24 00:42:31', 'Staff', 2, 'Active', NULL, '2023-05-15 04:14:42', '2023-06-24 00:42:31'),
 (7, 'Sabbir', 'staffsabbir@email.com', '$2y$10$XBmGgtwRKRbZdnQcK3c6BecqW8WSV7KrWtSgPfe/EOOYohTflolq2', '01878136530', NULL, NULL, 'Dhaka BD', 'default_profile_photo.png', '2023-05-20 04:23:44', 'Staff', 1, 'Active', 'Yyk3rSOkJQRw4KjOi5BihoMHyRFxZheZsP4uYFOJdwbxwYklrzpMGpAV0X1p', '2023-05-20 04:13:12', '2023-05-20 04:23:44'),
 (8, 'Md Sabbir Ahammed', 'staff3@email.com', '$2y$10$QDpRONaGpTn0hIEdCQm2M.RSFbsfcRwoSu/cHbD8CGm3jjfJgiRm.', '01878136530', NULL, NULL, 'DDD', 'default_profile_photo.png', '2023-05-20 10:18:30', 'Staff', 1, 'Active', NULL, '2023-05-20 04:18:30', '2023-05-20 04:18:30');
 

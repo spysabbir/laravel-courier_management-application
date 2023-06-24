@@ -106,7 +106,7 @@
     </li>
     <li>
         <a href="{{ route('contact.message.index') }}">
-            <div class="parent-icon"><i class="bi bi-briefcase"></i></div>
+            <div class="parent-icon"><i class="bi bi-chat"></i></div>
             <div class="menu-title">Contact Message</div>
         </a>
     </li>

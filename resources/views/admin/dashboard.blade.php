@@ -16,50 +16,6 @@
             <div class="card-body">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-xl-3 row-cols-xxl-3 g-3">
                     <div class="col">
-                        <div class="card radius-10 bg-orange mb-0">
-                            <div class="card-body text-center">
-                                <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
-                                    <i class="bi bi-chat-left-quote-fill"></i>
-                                </div>
-                                <h3 class="text-white">{{ $all_admin }}</h3>
-                                <p class="mb-0 text-white">All Admin</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card radius-10 bg-dark mb-0">
-                            <div class="card-body text-center">
-                                <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
-                                    <i class="bi bi-file-earmark-check-fill"></i>
-                                </div>
-                                <h3 class="text-white">{{ $all_message }}</h3>
-                                <p class="mb-0 text-white">All Message</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card radius-10 bg-success mb-0">
-                            <div class="card-body text-center">
-                                <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
-                                    <i class="bi bi-people-fill"></i>
-                                </div>
-                                <h3 class="text-white">{{ $all_staff }}</h3>
-                                <p class="mb-0 text-white">Total Staff</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card radius-10 bg-purple mb-0">
-                            <div class="card-body text-center">
-                                <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
-                                    <i class="bi bi-tags-fill"></i>
-                                </div>
-                                <h3 class="text-white">{{ $all_courier }}</h3>
-                                <p class="mb-0 text-white">All Courier</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
                         <div class="card radius-10 bg-tiffany mb-0">
                             <div class="card-body text-center">
                                 <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
@@ -81,10 +37,130 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col">
+                        <div class="card radius-10 bg-orange mb-0">
+                            <div class="card-body text-center">
+                                <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
+                                    <i class="bi bi-file-earmark-check-fill"></i>
+                                </div>
+                                @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
+                                <h3 class="text-white">{{ $all_manager }}</h3>
+                                <p class="mb-0 text-white">All Manager</p>
+                                @else
+                                <h3 class="text-white">{{ App\Models\CourierSummary::where('sender_branch_id', Auth::user()->branch_id)->count() }}</h3>
+                                <p class="mb-0 text-white">Send Courier</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card radius-10 bg-purple mb-0">
+                            <div class="card-body text-center">
+                                <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
+                                    <i class="bi bi-tags-fill"></i>
+                                </div>
+                                @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
+                                <h3 class="text-white">{{ $all_courier }}</h3>
+                                <p class="mb-0 text-white">All Courier</p>
+                                @else
+                                <h3 class="text-white">{{ App\Models\CourierSummary::where('receiver_branch_id', Auth::user()->branch_id)->count() }}</h3>
+                                <p class="mb-0 text-white">Delivery Courier</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card radius-10 bg-success mb-0">
+                            <div class="card-body text-center">
+                                <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
+                                <h3 class="text-white">{{ $all_staff }}</h3>
+                                <p class="mb-0 text-white">Total Staff</p>
+                                @else
+                                <h3 class="text-white">{{ App\Models\User::where('role', 'Staff')->where('branch_id', Auth::user()->branch_id)->count() }}</h3>
+                                <p class="mb-0 text-white">Total Staff</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card radius-10 bg-dark mb-0">
+                            <div class="card-body text-center">
+                                <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
+                                    <i class="bi bi-chat-left-quote-fill"></i>
+                                </div>
+                                @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
+                                <h3 class="text-white">{{ $all_message }}</h3>
+                                <p class="mb-0 text-white">All Message</p>
+                                @else
+                                <h3 class="text-white">
+                                    {{ App\Models\CourierSummary::where('sender_branch_id', Auth::user()->branch_id)->orWhere('receiver_branch_id', Auth::user()->branch_id)->count() }}
+                                </h3>
+                                <p class="mb-0 text-white">All Courier</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-12 col-lg-12 col-xl-6 d-flex">
+        <div class="card radius-10 w-100">
+            <div class="card-header bg-transparent">
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <h5 class="mb-0">Courier All</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="d-lg-flex align-items-center justify-content-center gap-4">
+                    @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
+                    <div id="chart3"></div>
+                    @endif
+                    <ul class="list-group list-group-flush">
+                        @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
+                        <li class="list-group-item"><i class="bi bi-circle-fill text-orange me-1"></i>
+                            Processing: <span class="me-1">{{ App\Models\CourierSummary::where('courier_status', 'Processing')->count() }}</span>
+                        </li>
+                        <li class="list-group-item"><i class="bi bi-circle-fill text-primary me-1"></i>
+                            On the way: <span class="me-1">{{ App\Models\CourierSummary::where('courier_status', 'On the way')->count() }}</span>
+                        </li>
+                        <li class="list-group-item"><i class="bi bi-circle-fill text-danger me-1"></i>
+                            Shipped: <span class="me-1">{{ App\Models\CourierSummary::where('courier_status', 'Shipped')->count() }}</span>
+                        </li>
+                        <li class="list-group-item"><i class="bi bi-circle-fill text-success me-1"></i>
+                            Delivered: <span class="me-1">{{ App\Models\CourierSummary::where('courier_status', 'Delivered')->count() }}</span>
+                        </li>
+                        @else
+                        <li class="list-group-item"><i class="bi bi-circle-fill text-success me-1"></i>
+                            Send Processing Courier: <span class="me-1">{{ App\Models\CourierSummary::where('sender_branch_id', Auth::user()->branch_id)->where('courier_status', 'Processing')->count() }}</span>
+                        </li>
+                        <li class="list-group-item"><i class="bi bi-circle-fill text-success me-1"></i>
+                            Send On the way Courier: <span class="me-1">{{ App\Models\CourierSummary::where('sender_branch_id', Auth::user()->branch_id)->where('courier_status', 'On the way')->count() }}</span>
+                        </li>
+                        <li class="list-group-item"><i class="bi bi-circle-fill text-success me-1"></i>
+                            Delivery On the way Courier: <span class="me-1">{{ App\Models\CourierSummary::where('receiver_branch_id', Auth::user()->branch_id)->where('courier_status', 'On the way')->count() }}</span>
+                        </li>
+                        <li class="list-group-item"><i class="bi bi-circle-fill text-success me-1"></i>
+                            Delivery Processing Courier: <span class="me-1">{{ App\Models\CourierSummary::where('receiver_branch_id', Auth::user()->branch_id)->where('courier_status', 'Shipped')->count() }}</span>
+                        </li>
+                        <li class="list-group-item"><i class="bi bi-circle-fill text-success me-1"></i>
+                            Delivered Courier: <span class="me-1">{{ App\Models\CourierSummary::where('sender_branch_id', Auth::user()->branch_id)->orWhere('receiver_branch_id', Auth::user()->branch_id)->where('courier_status', 'Delivered')->count() }}</span>
+                        </li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--end row-->
+
+@if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
+<div class="row">
     <div class="col-12 col-lg-12 col-xl-6 d-flex">
         <div class="card radius-10 w-100">
             <div class="card-header bg-transparent">
@@ -103,37 +179,12 @@
             </div>
         </div>
     </div>
-</div><!--end row-->
-
-<div class="row">
     <div class="col-12 col-lg-12 col-xl-12 col-xxl-6 d-flex">
         <div class="card radius-10 w-100">
             <div class="card-header bg-transparent">
                 <div class="row g-3 align-items-center">
                     <div class="col">
-                        <h5 class="mb-0">User</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="d-lg-flex align-items-center justify-content-center gap-4">
-                    <div id="chart3"></div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="bi bi-circle-fill text-orange me-1"></i> Author: <span class="me-1">1</span></li>
-                        <li class="list-group-item"><i class="bi bi-circle-fill text-primary me-1"></i> Admin: <span class="me-1">{{ $all_admin }}</span></li>
-                        <li class="list-group-item"><i class="bi bi-circle-fill text-danger me-1"></i> Manager: <span class="me-1">{{ $all_manager }}</span></li>
-                        <li class="list-group-item"><i class="bi bi-circle-fill text-success me-1"></i> Staff: <span class="me-1">{{ $all_staff }}</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-lg-12 col-xl-12 col-xxl-6 d-flex">
-        <div class="card radius-10 w-100">
-            <div class="card-header bg-transparent">
-                <div class="row g-3 align-items-center">
-                    <div class="col">
-                        <h5 class="mb-0">Courier Status</h5>
+                        <h5 class="mb-0">Courier Status - {{ date('F,Y') }}</h5>
                     </div>
                 </div>
             </div>
@@ -148,7 +199,7 @@
                                 <div class="card radius-10 mb-0 shadow-none bg-light-purple">
                                 <div class="card-body p-4">
                                     <div class="text-center">
-                                        <h5 class="mb-0 text-purple">{{ App\Models\CourierSummary::where('courier_status', 'Processing')->count() }}</h5>
+                                        <h5 class="mb-0 text-purple">{{ App\Models\CourierSummary::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->where('courier_status', 'Processing')->count() }}</h5>
                                         <p class="mb-0 text-purple">Processing</p>
                                     </div>
                                 </div>
@@ -158,7 +209,7 @@
                                 <div class="card radius-10 mb-0 shadow-none bg-light-orange">
                                 <div class="card-body p-4">
                                     <div class="text-center">
-                                    <h5 class="mb-0 text-orange">{{ App\Models\CourierSummary::where('courier_status', 'On the way')->count() }}</h5>
+                                    <h5 class="mb-0 text-orange">{{ App\Models\CourierSummary::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->where('courier_status', 'On the way')->count() }}</h5>
                                     <p class="mb-0 text-orange">On the way</p>
                                     </div>
                                 </div>
@@ -168,7 +219,7 @@
                                 <div class="card radius-10 mb-0 shadow-none bg-light-success">
                                     <div class="card-body p-4">
                                     <div class="text-center">
-                                        <h5 class="mb-0 text-success">{{ App\Models\CourierSummary::where('courier_status', 'Shipped')->count() }}</h5>
+                                        <h5 class="mb-0 text-success">{{ App\Models\CourierSummary::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->where('courier_status', 'Shipped')->count() }}</h5>
                                         <p class="mb-0 text-success">Shipped</p>
                                     </div>
                                     </div>
@@ -178,7 +229,7 @@
                                 <div class="card radius-10 mb-0 shadow-none bg-light-primary">
                                     <div class="card-body p-4">
                                         <div class="text-center">
-                                            <h5 class="mb-0 text-primary">{{ App\Models\CourierSummary::where('courier_status', 'Delivered')->count() }}</h5>
+                                            <h5 class="mb-0 text-primary">{{ App\Models\CourierSummary::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->where('courier_status', 'Delivered')->count() }}</h5>
                                             <p class="mb-0 text-primary">Delivered</p>
                                         </div>
                                     </div>
@@ -198,7 +249,7 @@
             <div class="card-header bg-transparent p-3">
                 <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
                 <div class="col">
-                    <h5 class="mb-0">{{ date('Y')-1 }} vs {{ date('Y') }}</h5>
+                    <h5 class="mb-0">Courier Status - {{ date('Y')-1 }} vs {{ date('Y') }}</h5>
                 </div>
                 <div class="col">
                     <div class="d-flex align-items-center justify-content-sm-end gap-3 cursor-pointer">
@@ -218,16 +269,18 @@
             <div class="card-header bg-transparent">
                 <div class="row g-3 align-items-center">
                     <div class="col">
-                        <h5 class="mb-0">Courier Status</h5>
+                        <h5 class="mb-0">Courier Type ({{ date('Y') }})</h5>
                     </div>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body py-5">
                 <div id="chart2"></div>
             </div>
         </div>
     </div>
 </div><!--end row-->
+@endif
+
 @endsection
 
 @section('script')
@@ -240,24 +293,23 @@ $(function() {
         series: [{
             name: "Courier",
             data: [
-                {{ App\Models\CourierSummary::whereMonth('created_at', 1)->count() }},
-                {{ App\Models\CourierSummary::whereMonth('created_at', 2)->count() }},
-                {{ App\Models\CourierSummary::whereMonth('created_at', 3)->count() }},
-                {{ App\Models\CourierSummary::whereMonth('created_at', 4)->count() }},
-                {{ App\Models\CourierSummary::whereMonth('created_at', 5)->count() }},
-                {{ App\Models\CourierSummary::whereMonth('created_at', 6)->count() }},
-                {{ App\Models\CourierSummary::whereMonth('created_at', 7)->count() }},
-                {{ App\Models\CourierSummary::whereMonth('created_at', 8)->count() }},
-                {{ App\Models\CourierSummary::whereMonth('created_at', 9)->count() }},
-                {{ App\Models\CourierSummary::whereMonth('created_at', 10)->count() }},
-                {{ App\Models\CourierSummary::whereMonth('created_at', 11)->count() }},
-                {{ App\Models\CourierSummary::whereMonth('created_at', 12)->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->whereMonth('created_at', 1)->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->whereMonth('created_at', 2)->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->whereMonth('created_at', 3)->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->whereMonth('created_at', 4)->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->whereMonth('created_at', 5)->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->whereMonth('created_at', 6)->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->whereMonth('created_at', 7)->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->whereMonth('created_at', 8)->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->whereMonth('created_at', 9)->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->whereMonth('created_at', 10)->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->whereMonth('created_at', 11)->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->whereMonth('created_at', 12)->count() }},
             ]
         }],
         chart: {
             foreColor: '#9a9797',
             type: "bar",
-            //width: 130,
             height: 270,
             toolbar: {
                 show: !1
@@ -334,17 +386,14 @@ $(function() {
         series: [{
             name: "Courier Status",
             data: [
-                {{ App\Models\CourierSummary::where('courier_status', 'Processing')->count() }},
-                {{ App\Models\CourierSummary::where('courier_status', 'On the way')->count() }},
-                {{ App\Models\CourierSummary::where('courier_status', 'Shipped')->count() }},
-                {{ App\Models\CourierSummary::where('courier_status', 'Delivered')->count() }}
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->where('sender_type', 'Company')->count() }},
+                {{ App\Models\CourierSummary::whereYear('created_at', date('Y'))->where('sender_type', 'Individual')->count() }},
             ]
         }],
         chart: {
             foreColor: '#9a9797',
             type: "bar",
-            //width: 130,
-            height: 270,
+            height: 170,
             toolbar: {
                 show: !1
             },
@@ -401,7 +450,7 @@ $(function() {
         },
         colors: ["#12bf24"],
         xaxis: {
-            categories: ["Processing", "On the way", "Shipped", "Delivered"]
+            categories: ["Company", "Individual"]
         },
         tooltip: {
             theme: 'dark',
@@ -417,12 +466,17 @@ $(function() {
 
     // chart 3
     var options = {
-        series: [1, {{ $all_admin }}, {{ $all_manager }}, {{ $all_staff }}],
+        series: [
+                {{ App\Models\CourierSummary::where('courier_status', 'Processing')->count() }},
+                {{ App\Models\CourierSummary::where('courier_status', 'On the way')->count() }},
+                {{ App\Models\CourierSummary::where('courier_status', 'Shipped')->count() }},
+                {{ App\Models\CourierSummary::where('courier_status', 'Delivered')->count() }}
+                ],
         chart: {
         width: 340,
         type: 'donut',
         },
-        labels: ["Author", "Admin", "Manager", "Staff"],
+        labels: ["Processing", "On the way", "Shipped", "Delivered"],
         colors: ["#3361ff", "#e72e2e", "#12bf24", "#ff6632"],
         legend: {
             show: false,
@@ -448,7 +502,7 @@ $(function() {
 
     // chart 4
     var options = {
-        series: [{{ $all_courier }}],
+        series: [{{ App\Models\CourierSummary::whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->count() }}],
         chart: {
             foreColor: '#9ba7b2',
             height: 280,
@@ -599,9 +653,7 @@ $(function() {
                 bottom: 0
             }
         },
-        //labels: ['01/15/2002', '01/16/2002', '01/17/2002', '01/18/2002', '01/19/2002', '01/20/2002'],
         xaxis: {
-            //type: 'datetime',
             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         },
         legend: {

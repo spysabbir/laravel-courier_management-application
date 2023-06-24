@@ -17,7 +17,7 @@
                         <div class="col-lg-6 mb-3">
                             <label>Logo Photo</label>
                             <input type="file" class="form-control" name="logo_photo" id="logoImage">
-                            <img src="{{ asset('uploads/default_photo') }}/{{ $default_setting->logo_photo }}" width="100"  height="100" id="logoImagePreview">
+                            <img src="{{ asset('uploads/default_photo') }}/{{ $default_setting->logo_photo }}" width="100" height="100" id="logoImagePreview">
                             @error('logo_photo')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -25,7 +25,7 @@
                         <div class="col-lg-6 mb-3">
                             <label>Favicon</label>
                             <input type="file" class="form-control" name="favicon" id="favicon">
-                            <img src="{{ asset('uploads/default_photo') }}/{{ $default_setting->favicon }}" width="100"  height="100" id="faviconPreview">
+                            <img src="{{ asset('uploads/default_photo') }}/{{ $default_setting->favicon }}" width="100" height="100" id="faviconPreview">
                             @error('favicon')
                             <span class="text-danger">{{$message}}</span>
                             @enderror

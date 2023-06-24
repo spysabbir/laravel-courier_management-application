@@ -77,28 +77,18 @@
                         <h1 class="wow fadeInUp" data-wow-delay=".4s">{{ $aboutUs->headline }}</h1>
                         <p class="wow fadeInUp" data-wow-delay=".6s">{!! $aboutUs->description !!}</p>
                     </div>
-                    <div class="rating-meta d-flex align-items-center wow fadeInUp" data-wow-delay=".65s">
-                        <h5>Rating 4.8</h5>
-                        <div class="rating">
-                            <i class="lni lni-star-filled"></i>
-                            <i class="lni lni-star-filled"></i>
-                            <i class="lni lni-star-filled"></i>
-                            <i class="lni lni-star-filled"></i>
-                            <i class="lni lni-star-filled"></i>
-                        </div>
-                    </div>
                     <div class="counter-up wow fadeInUp" data-wow-delay=".8s">
                         <div class="single-counter">
-                            <h3 id="secondo1" class="countup" cup-end="1" cup-append="M+">1 </h3>
-                            <h5>Download</h5>
+                            <h3 id="secondo1" class="countup" cup-end="{{ $companies }}" cup-append="+">{{ $companies }}</h3>
+                            <h5>Partner Company</h5>
                         </div>
                         <div class="single-counter position-relative">
-                            <h3 id="secondo2" class="countup" cup-end="234" cup-append="K+">234 </h3>
-                            <h5>Happy User</h5>
+                            <h3 id="secondo2" class="countup" cup-end="{{ $branches }}" cup-append="+">{{ $branches }}</h3>
+                            <h5>Branch</h5>
                         </div>
                         <div class="single-counter">
-                            <h3 id="secondo3" class="countup" cup-end="34" cup-append="K+">34 </h3>
-                            <h5>Reviews</h5>
+                            <h3 id="secondo3" class="countup" cup-end="{{ $happy_customars }}" cup-append="+">{{ $happy_customars }}</h3>
+                            <h5>Customer Satisfaction</h5>
                         </div>
                     </div>
                 </div>

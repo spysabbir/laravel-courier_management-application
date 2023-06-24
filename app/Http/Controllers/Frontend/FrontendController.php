@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
 use App\Models\Branch;
+use App\Models\Company;
 use App\Models\ContactMessage;
 use App\Models\CourierSummary;
 use App\Models\DefaultSetting;
@@ -22,7 +23,10 @@ class FrontendController extends Controller
         $services = Service::where('status', 'Active')->get();
         $testimonials = Testimonial::where('status', 'Active')->get();
         $aboutUs = AboutUs::first();
-        return view('frontend.index', compact('services', 'testimonials', 'aboutUs'));
+        $companies = Company::count();
+        $branches = Branch::count();
+        $happy_customars = CourierSummary::count();
+        return view('frontend.index', compact('services', 'testimonials', 'aboutUs', 'companies', 'branches', 'happy_customars'));
     }
 
     public function allBranch()
