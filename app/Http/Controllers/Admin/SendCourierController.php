@@ -53,9 +53,6 @@ class SendCourierController extends Controller
             'receiver_address' => 'required',
             'payment_type' => 'required',
             'payment_amount' => 'required',
-            'inputs.*.item_description' => 'required|max:255',
-            'inputs.*.unit_id' => 'required|exists:units,id',
-            'inputs.*.item_quantity' => 'required|numeric|min:1',
         ]);
 
         if ($validator->fails()) {
@@ -63,70 +60,92 @@ class SendCourierController extends Controller
                 'status' => 400,
                 'error'=> $validator->errors()->toArray()
             ]);
-        }else{
+        } else{
+            $customMessages = [
+                'inputs.*.item_description.required' => 'The item description is required.',
+                'inputs.*.unit_id.required' => 'The unit ID is required.',
+                'inputs.*.unit_id.exists' => 'The selected unit is invalid.',
+                'inputs.*.item_quantity.required' => 'The item quantity is required.',
+                'inputs.*.item_quantity.numeric' => 'The item quantity must be a number.',
+                'inputs.*.item_quantity.min' => 'The item quantity must be at least :min.',
+            ];
 
-            $tracking_id = date('dmy').random_int(100, 999);
 
-            if ($request->payment_type == "Sender Payment") {
-                $payment_status = "Paid";
+            $validator = Validator::make($request->all(), [
+                'inputs.*.item_description' => 'required|max:255',
+                'inputs.*.unit_id' => 'required|exists:units,id',
+                'inputs.*.item_quantity' => 'required|numeric|min:1',
+            ], $customMessages);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => 401,
+                    'errors'=> $validator->errors()->toArray()
+                ]);
             } else {
-                $payment_status = "Unpaid";
-            }
+                $tracking_id = date('dmy').random_int(100, 999);
 
-            $courier_summary_id = CourierSummary::insertGetId([
-                'tracking_id' => $tracking_id,
-                'sender_type' => $request->sender_type,
-                'sender_branch_id' => Auth::user()->branch_id,
-                'sender_name' => $request->sender_name,
-                'sender_email' => $request->sender_email,
-                'sender_phone_number' => $request->sender_phone_number,
-                'sender_address' => $request->sender_address,
-                'receiver_branch_id' => $request->receiver_branch_id,
-                'receiver_name' => $request->receiver_name,
-                'receiver_email' => $request->receiver_email,
-                'receiver_phone_number' => $request->receiver_phone_number,
-                'receiver_address' => $request->receiver_address,
-                'special_comment' => $request->special_comment,
-                'grand_total' => $request->grand_total,
-                'payment_type' => $request->payment_type,
-                'payment_status' => $payment_status,
-                'payment_amount' => $request->payment_amount,
-                'sender_agent_id' => Auth::user()->id,
-                'created_at' => Carbon::now(),
-            ]);
+                if ($request->payment_type == "Sender Payment") {
+                    $payment_status = "Paid";
+                } else {
+                    $payment_status = "Unpaid";
+                }
 
-            foreach($request->inputs as $value){
-                CourierDetails::insert($value+[
-                    'courier_summary_id' => $courier_summary_id,
+                $courier_summary_id = CourierSummary::insertGetId([
+                    'tracking_id' => $tracking_id,
+                    'sender_type' => $request->sender_type,
+                    'sender_branch_id' => Auth::user()->branch_id,
+                    'sender_name' => $request->sender_name,
+                    'sender_email' => $request->sender_email,
+                    'sender_phone_number' => $request->sender_phone_number,
+                    'sender_address' => $request->sender_address,
+                    'receiver_branch_id' => $request->receiver_branch_id,
+                    'receiver_name' => $request->receiver_name,
+                    'receiver_email' => $request->receiver_email,
+                    'receiver_phone_number' => $request->receiver_phone_number,
+                    'receiver_address' => $request->receiver_address,
+                    'special_comment' => $request->special_comment,
+                    'grand_total' => $request->grand_total,
+                    'payment_type' => $request->payment_type,
+                    'payment_status' => $payment_status,
+                    'payment_amount' => $request->payment_amount,
+                    'sender_agent_id' => Auth::user()->id,
+                    'created_at' => Carbon::now(),
+                ]);
+
+                foreach($request->inputs as $value){
+                    CourierDetails::insert($value+[
+                        'courier_summary_id' => $courier_summary_id,
+                    ]);
+                }
+
+                // Send SMS
+                $url = "https://bulksmsbd.net/api/smsapi";
+                $api_key = env('SMS_API_KEY');
+                $senderid = env('SMS_SENDER_ID');
+                $number = "$request->receiver_phone_number";
+                $message = "Hello $request->sender_name, your courier is processing. Your tracking id is $tracking_id. Save this message if you want to know your status.";
+                $data = [
+                    "api_key" => $api_key,
+                    "senderid" => $senderid,
+                    "number" => $number,
+                    "message" => $message
+                ];
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                $response = curl_exec($ch);
+                curl_close($ch);
+                // return $response;
+
+                return response()->json([
+                    'status' => 200,
+                    'courier_summary_id'=> $courier_summary_id
                 ]);
             }
-
-            // Send SMS
-            $url = "https://bulksmsbd.net/api/smsapi";
-            $api_key = env('SMS_API_KEY');
-            $senderid = env('SMS_SENDER_ID');
-            $number = "$request->receiver_phone_number";
-            $message = "Hello $request->sender_name, your courier is processing. Your tracking id is $tracking_id. Save this message if you want to know your status.";
-            $data = [
-                "api_key" => $api_key,
-                "senderid" => $senderid,
-                "number" => $number,
-                "message" => $message
-            ];
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            $response = curl_exec($ch);
-            curl_close($ch);
-            // return $response;
-
-            return response()->json([
-                'status' => 200,
-                'courier_summary_id'=> $courier_summary_id
-            ]);
         }
     }
 

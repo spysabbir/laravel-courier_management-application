@@ -37,7 +37,6 @@
                                             <option value="{{ $company->id }}">{{ $company->company_name }}</option>
                                             @endforeach
                                         </select>
-                                        <span class="text-danger error-text sender_type_error"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label>Sender Name</label>
@@ -111,9 +110,7 @@
                                     <div class="row">
                                         <div class="col-lg-4 mb-3">
                                             <label>Item Description</label>
-
                                             <textarea class="form-control" rows="1" name="inputs[0][item_description]" placeholder="Item description"></textarea>
-                                            <span class="text-danger error-text item_description_error"></span>
                                         </div>
                                         <div class="col-lg-8">
                                             <div class="row">
@@ -125,7 +122,6 @@
                                                             <option value="{{ $unit->id }}">{{ $unit->unit_name }}</option>
                                                         @endforeach
                                                     </select>
-                                                    <span class="text-danger error-text unit_id_error"></span>
                                                 </div>
                                                 <div class="col-lg-2 col-md-6 col-12 mb-3">
                                                     <label>Cost</label>
@@ -134,7 +130,6 @@
                                                 <div class="col-lg-2 col-md-6 col-12 mb-3">
                                                     <label>Quantity</label>
                                                     <input type="number" class="form-control get_item_quantity" name="inputs[0][item_quantity]" placeholder="Quantity">
-                                                    <span class="text-danger error-text item_quantity_error"></span>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6 col-12 mb-3">
                                                     <label>Total Cose</label>
@@ -148,6 +143,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <span class="text-danger" id="validation-errors"></span>
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-lg-8">
@@ -339,13 +335,26 @@
                             $('span.'+prefix+'_error').text(val[0]);
                         })
                     }else{
-                        $('#sendCourierForm')[0].reset();
-                        toastr.success('Send courier successfully.');
+                        if (response.status == 401) {
+                            toastr.error('Inputs field Error!');
+                            $('#validation-errors').empty();
+                            $.each(response.errors, function(field, messages) {
+                                const errorList = $('<ul>');
+                                $.each(messages, function(index, message) {
+                                    errorList.append($('<li>').text(message));
+                                });
+                                $('#validation-errors').append($('<p>').text('Errors for ' + field + ':'));
+                                $('#validation-errors').append(errorList);
+                            });
+                        } else {
+                            $('#sendCourierForm')[0].reset();
+                            toastr.success('Send courier successfully.');
 
-                        var id = response.courier_summary_id;
-                        var url = "{{ route('courier.invoice', ':id') }}";
-                        url = url.replace(':id', id);
-                        window.location.href = url;
+                            var id = response.courier_summary_id;
+                            var url = "{{ route('courier.invoice', ':id') }}";
+                            url = url.replace(':id', id);
+                            window.location.href = url;
+                        }
                     }
                 },
             });
