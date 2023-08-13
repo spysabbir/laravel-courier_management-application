@@ -61,21 +61,20 @@ class SendCourierController extends Controller
                 'error'=> $validator->errors()->toArray()
             ]);
         } else{
-            $customMessages = [
-                'inputs.*.item_description.required' => 'The item description is required.',
-                'inputs.*.unit_id.required' => 'The unit ID is required.',
-                'inputs.*.unit_id.exists' => 'The selected unit is invalid.',
-                'inputs.*.item_quantity.required' => 'The item quantity is required.',
-                'inputs.*.item_quantity.numeric' => 'The item quantity must be a number.',
-                'inputs.*.item_quantity.min' => 'The item quantity must be at least :min.',
-            ];
+            // $customMessages = [
+            //     'inputs.*.item_description.required' => 'The item description is required.',
+            //     'inputs.*.unit_id.required' => 'The unit ID is required.',
+            //     'inputs.*.item_quantity.required' => 'The item quantity is required.',
+            //     'inputs.*.item_quantity.gte' => 'The :attribute must be greater than or equal to 1.',
+            // ];
 
 
             $validator = Validator::make($request->all(), [
-                'inputs.*.item_description' => 'required|max:255',
-                'inputs.*.unit_id' => 'required|exists:units,id',
-                'inputs.*.item_quantity' => 'required|numeric|min:1',
-            ], $customMessages);
+                'inputs.*.item_description' => 'required',
+                'inputs.*.unit_id' => 'required',
+                'inputs.*.item_quantity' => 'required|gte:1',
+            ]);
+            // ], $customMessages);
 
             if ($validator->fails()) {
                 return response()->json([

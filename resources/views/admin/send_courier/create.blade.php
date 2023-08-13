@@ -132,7 +132,7 @@
                                                     <input type="number" class="form-control get_item_quantity" name="inputs[0][item_quantity]" placeholder="Quantity">
                                                 </div>
                                                 <div class="col-lg-3 col-md-6 col-12 mb-3">
-                                                    <label>Total Cose</label>
+                                                    <label>Total Cost</label>
                                                     <input type="number" class="form-control total_cost_rate" name="inputs[0][total_cost_rate]" placeholder="Total cost" readonly>
                                                 </div>
                                                 <div class="col-lg-1 col-md-6 col-12 mb-3">
@@ -209,11 +209,23 @@
         $('#company_name').hide();
         // Show Company Name
         $(document).on('change', '#sender_type', function() {
+            $('#sender_name').val('');
+            $('#sender_email').val('');
+            $('#sender_phone_number').val('');
+            $('#sender_address').val('');
             var sender_type = $(this).val();
             if (sender_type == 'Company') {
                 $('#company_name').show();
+                $('#sender_name').attr('readonly', true);
+                $('#sender_email').attr('readonly', true);
+                $('#sender_phone_number').attr('readonly', true);
+                $('#sender_address').attr('readonly', true);
             } else {
                 $('#company_name').hide();
+                $('#sender_name').removeAttr('readonly');
+                $('#sender_email').removeAttr('readonly');
+                $('#sender_phone_number').removeAttr('readonly');
+                $('#sender_address').removeAttr('readonly');
             }
         });
 
@@ -273,6 +285,22 @@
         // Remove Item
         $(document).on('click', '.remove_item_btn', function() {
             $(this).parent().parent().parent().parent().remove();
+
+            var cost_rate = $(this).closest(".row").find(".get_cost_rate").val();
+            var item_quantity = $(this).closest(".row").find(".get_item_quantity").val();
+            var total_cost = cost_rate * item_quantity;
+            $(this).closest(".row").find(".total_cost_rate").val(total_cost);
+
+            // Calculate the grand total
+            var grand_total = 0;
+            $(".total_cost_rate").each(function () {
+                grand_total += parseFloat($(this).val()) || 0;
+            });
+            $("#get_grand_total").val(grand_total);
+
+            $('#select_payment_type').val("");
+            $('#get_payment_amount').val("");
+
         });
 
         // Get Cost
@@ -304,6 +332,9 @@
                 grand_total += parseFloat($(this).val()) || 0;
             });
             $("#get_grand_total").val(grand_total);
+
+            $('#select_payment_type').val("");
+            $('#get_payment_amount').val("");
         });
 
         // Get Payment Amount
@@ -328,6 +359,7 @@
                 data: $(this).serialize(),
                 beforeSend:function(){
                     $(document).find('span.error-text').text('');
+                    $('#validation-errors').empty();
                 },
                 success: function (response) {
                     if (response.status == 400) {
@@ -337,13 +369,11 @@
                     }else{
                         if (response.status == 401) {
                             toastr.error('Inputs field Error!');
-                            $('#validation-errors').empty();
                             $.each(response.errors, function(field, messages) {
                                 const errorList = $('<ul>');
                                 $.each(messages, function(index, message) {
                                     errorList.append($('<li>').text(message));
                                 });
-                                $('#validation-errors').append($('<p>').text('Errors for ' + field + ':'));
                                 $('#validation-errors').append(errorList);
                             });
                         } else {
