@@ -166,13 +166,12 @@ class ReportController extends Controller
             $income_summaries = "";
             $query = CourierSummary::where('payment_status', 'Paid');
 
-            // if($request->branch_id){
-            //     // $query->where('courier_summaries.payment_type', "Sender Payment")->where('courier_summaries.sender_branch_id', $request->branch_id)->orWhere('courier_summaries.receiver_branch_id', $request->branch_id);
-            //     // $query->where('courier_summaries.payment_type', "Receiver Payment")->where('courier_summaries.receiver_branch_id', $request->branch_id)->orWhere('courier_summaries.sender_branch_id', $request->branch_id);
-            //     $query->where('courier_summaries.payment_type', "Receiver Payment")->where('courier_summaries.receiver_branch_id', $request->branch_id)->where('courier_summaries.sender_branch_id', $request->branch_id);
-            //     $query->where('courier_summaries.payment_type', "Sender Payment")->where('courier_summaries.sender_branch_id', $request->branch_id);
-            // };
-
+            if($request->branch_id){
+                $query->where('courier_summaries.payment_type', "Sender Payment")
+                        ->where('courier_summaries.sender_branch_id', $request->branch_id)
+                        ->orWhere('courier_summaries.payment_type', "Receiver Payment")
+                        ->where('courier_summaries.receiver_branch_id', $request->branch_id);
+            };
 
             if($request->created_at_start){
                 $query->whereDate('courier_summaries.created_at', '>=', $request->created_at_start);
@@ -218,13 +217,12 @@ class ReportController extends Controller
             $income_summaries = "";
             $query = CourierSummary::where('payment_status', 'Paid');
 
-            // $branch_id = $request->branch_id;
-            // if($request->branch_id){
-            //     // $query->where('courier_summaries.payment_type', "Sender Payment")->where('courier_summaries.sender_branch_id', $request->branch_id)->orWhere('courier_summaries.receiver_branch_id', $request->branch_id);
-            //     // $query->where('courier_summaries.payment_type', "Receiver Payment")->where('courier_summaries.receiver_branch_id', $request->branch_id)->orWhere('courier_summaries.sender_branch_id', $request->branch_id);
-            //     $query->where('courier_summaries.payment_type', "Receiver Payment")->where('courier_summaries.receiver_branch_id', $request->branch_id)->where('courier_summaries.sender_branch_id', $request->branch_id);
-            //     $query->where('courier_summaries.payment_type', "Sender Payment")->where('courier_summaries.sender_branch_id', $request->branch_id);
-            // };
+            if($request->branch_id){
+                $query->where('courier_summaries.payment_type', "Sender Payment")
+                        ->where('courier_summaries.sender_branch_id', $request->branch_id)
+                        ->orWhere('courier_summaries.payment_type', "Receiver Payment")
+                        ->where('courier_summaries.receiver_branch_id', $request->branch_id);
+            };
 
             if($request->created_at_start){
                 $query->whereDate('courier_summaries.created_at', '>=', $request->created_at_start);
@@ -250,12 +248,13 @@ class ReportController extends Controller
         $income_summaries = "";
         $query = CourierSummary::where('payment_status', 'Paid');
 
-        // if($request->branch_id){
-        //     // $query->where('courier_summaries.payment_type', "Sender Payment")->where('courier_summaries.sender_branch_id', $request->branch_id)->orWhere('courier_summaries.receiver_branch_id', $request->branch_id);
-        //     // $query->where('courier_summaries.payment_type', "Receiver Payment")->where('courier_summaries.receiver_branch_id', $request->branch_id)->orWhere('courier_summaries.sender_branch_id', $request->branch_id);
-        //     $query->where('courier_summaries.payment_type', "Receiver Payment")->where('courier_summaries.receiver_branch_id', $request->branch_id)->where('courier_summaries.sender_branch_id', $request->branch_id);
-        //     $query->where('courier_summaries.payment_type', "Sender Payment")->where('courier_summaries.sender_branch_id', $request->branch_id);
-        // };
+        if($request->branch_id){
+            $query->where('courier_summaries.payment_type', "Sender Payment")
+                    ->where('courier_summaries.sender_branch_id', $request->branch_id)
+                    ->orWhere('courier_summaries.payment_type', "Receiver Payment")
+                    ->where('courier_summaries.receiver_branch_id', $request->branch_id);
+        };
+        
         if($request->created_at_start){
             $query->whereDate('courier_summaries.created_at', '>=', $request->created_at_start);
         }
