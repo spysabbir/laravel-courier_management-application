@@ -12,7 +12,7 @@ git clone https://github.com/spysabbir/Laravel-Courier-Management-Application.gi
 ``` 
 - Now change the command line present working directory (pwd) by
  ```
-cd laravel-courier-project-one
+cd Laravel-Courier-Management-Application
 ``` 
 - Now with help of `composer` download all required packages those need to run this laravel project
  ```
