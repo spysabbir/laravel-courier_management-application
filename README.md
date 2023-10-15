@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="#" width="400"></a></p>
+<p align="center"><a href="https://courier.spysabbir.com/" target="_blank"><img src="#"></a></p>
 
 ## About This Project
 
@@ -8,7 +8,7 @@ This is project is the Courier Management System. Built with `Laravel` & various
 
 - First of all we have to `clone` the project at our local machine using below command
  ```
-git clone https://github.com/spysabbir/laravel-courier-project-one.git
+git clone https://github.com/spysabbir/Laravel-Courier-Management-Application.git
 ``` 
 - Now change the command line present working directory (pwd) by
  ```
@@ -30,18 +30,12 @@ php artisan key:generate
 
 Variable Name | Description
 --- | ---
-APP_DEBUG | `true` will show the errors, `false` will hide errors by showing common exception page
 DB_* | database settings to connect the database with this project
 MAIL_* | database settings to send email via SMTP
 
-- Now migrate the database using
+- Now migrate and seed the database using
  ```
-php artisan migrate
-``` 
-
-- Seed the database using
- ```
-php artisan db:seed
+php artisan migrate --seed
 ``` 
 
 - At last, we can now run the project using
@@ -63,11 +57,3 @@ Email: staff1@email.com
 Email: staff2@email.com
 Password: 12345678
 ``` 
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the  [Laravel documentation](https://laravel.com/docs/contributions) .
-
-## License
-
-The Laravel framework is open-sourced software licensed under the  [MIT license](https://opensource.org/licenses/MIT) .
