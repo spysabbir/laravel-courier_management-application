@@ -8,11 +8,11 @@ This is project is the Courier Management System. Built with `Laravel` & various
 
 - First of all we have to `clone` the project at our local machine using below command
  ```
-git clone https://github.com/spysabbir/Laravel-Courier-Management-Application.git
+git clone https://github.com/spysabbir/laravel-courier_management-application.git
 ``` 
 - Now change the command line present working directory (pwd) by
  ```
-cd Laravel-Courier-Management-Application
+cd laravel-courier_management-application
 ``` 
 - Now with help of `composer` download all required packages those need to run this laravel project
  ```
