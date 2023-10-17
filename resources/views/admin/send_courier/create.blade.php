@@ -12,7 +12,6 @@
             <div class="card-body">
                 <form action="#" method="POST" id="sendCourierForm">
                     @csrf
-
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="card">

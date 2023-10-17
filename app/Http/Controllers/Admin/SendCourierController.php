@@ -61,20 +61,11 @@ class SendCourierController extends Controller
                 'error'=> $validator->errors()->toArray()
             ]);
         } else{
-            // $customMessages = [
-            //     'inputs.*.item_description.required' => 'The item description is required.',
-            //     'inputs.*.unit_id.required' => 'The unit ID is required.',
-            //     'inputs.*.item_quantity.required' => 'The item quantity is required.',
-            //     'inputs.*.item_quantity.gte' => 'The :attribute must be greater than or equal to 1.',
-            // ];
-
-
             $validator = Validator::make($request->all(), [
                 'inputs.*.item_description' => 'required',
                 'inputs.*.unit_id' => 'required',
                 'inputs.*.item_quantity' => 'required|gte:1',
             ]);
-            // ], $customMessages);
 
             if ($validator->fails()) {
                 return response()->json([

@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
-use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\CompanyController;
@@ -33,8 +32,6 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::middleware('auth')->group(function () {
-        Route::put('password', [PasswordController::class, 'update'])->name('password.update');
-
         Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');

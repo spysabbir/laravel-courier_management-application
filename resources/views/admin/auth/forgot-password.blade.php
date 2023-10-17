@@ -17,8 +17,8 @@
             @csrf
             <div class="row g-3">
                 <div class="col-12">
-                    <label for="inputEmailid" class="form-label">Email id</label>
-                    <input type="email" name="email" class="form-control form-control-lg radius-30" id="inputEmailid" placeholder="Email id" value="{{ old('email') }}">
+                    <label for="inputEmailAddress" class="form-label">Email Address</label>
+                    <input type="email" name="email" class="form-control form-control-lg radius-30" id="inputEmailAddress" placeholder="Email Address" value="{{ old('email') }}">
                     @error('email')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror

@@ -39,8 +39,8 @@ class SettingController extends Controller
 
     public function defaultSettingUpdate(Request $request, $id){
         $request->validate([
-            'logo_photo' => 'nullable|image|mimes:png,jpg,jpeg',
-            'favicon' => 'nullable|image|mimes:png,jpg,jpeg',
+            'logo_photo' => 'nullable|image|mimes:png,jpg,jpeg,webp',
+            'favicon' => 'nullable|image|mimes:png,jpg,jpeg,webp',
             'app_name' => 'required|max:255',
             'app_url' => 'required',
             'time_zone' => 'required',

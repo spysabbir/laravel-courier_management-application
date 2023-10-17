@@ -71,7 +71,7 @@ class CompanyController extends Controller
             'company_phone_number' => 'required|min:11|max:14',
             'company_address' => 'required',
             'company_url' => 'required',
-            'company_photo' => 'nullable|image|mimes:png,jpg,jpeg'
+            'company_photo' => 'nullable|image|mimes:png,jpg,jpeg,webp'
         ]);
 
         if($validator->fails()){
@@ -124,7 +124,7 @@ class CompanyController extends Controller
             'company_phone_number' => 'required|min:11|max:14',
             'company_address' => 'required',
             'company_url' => 'required',
-            'company_photo' => 'nullable|image|mimes:png,jpg,jpeg'
+            'company_photo' => 'nullable|image|mimes:png,jpg,jpeg,webp'
         ]);
 
         if($validator->fails()){

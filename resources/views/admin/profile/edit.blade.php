@@ -18,7 +18,7 @@
                             @csrf
                             @method('patch')
                             <div class="mb-3">
-                                <label for="profilePhoto">Logo Photo</label>
+                                <label for="profilePhoto">Profile Photo</label>
                                 <input type="file" class="form-control" name="profile_photo" id="profilePhoto">
                                 @error('profile_photo')
                                 <span class="text-danger">{{$message}}</span>

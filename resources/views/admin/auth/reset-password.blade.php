@@ -1,6 +1,6 @@
 @extends('admin.layouts.auth_master')
 
-@section('title', 'Forgot Password')
+@section('title', 'Genrate New Password')
 
 @section('content')
 <div class="col-lg-6">
@@ -9,9 +9,10 @@
         <p class="card-text mb-5">We received your reset password request. Please enter your new password!</p>
         <form class="form-body" method="POST" action="{{ route('password.store') }}">
             <div class="row g-3">
-                <!-- Password Reset Token -->
+
                 <input type="hidden" name="token" value="{{ $request->route('token') }}">
                 <input type="hidden" name="email" value="{{ old('email', $request->email) }}">
+
                 <div class="col-12">
                     <label for="inputNewPassword" class="form-label">New Password</label>
                     <div class="ms-auto position-relative">
@@ -35,7 +36,7 @@
                 <div class="col-12">
                     <div class="d-grid gap-3">
                         <button type="submit" class="btn btn-primary radius-30">Change Password</button>
-                        <button type="submit" class="btn btn-light radius-30">Back to Login</button>
+                        <a href="{{ route('login') }}" class="btn btn-lg btn-light radius-30">Back to Login</a>
                     </div>
                 </div>
             </div>

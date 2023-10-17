@@ -20,7 +20,7 @@ class PageController extends Controller
 
     public function aboutUsPageUpdate(Request $request, $id){
         $request->validate([
-            'about_photo' => 'nullable|image|mimes:png,jpg,jpeg',
+            'about_photo' => 'nullable|image|mimes:png,jpg,jpeg,webp',
             '*' => 'required',
         ]);
         $aboutUs = AboutUs::where('id', $id)->first();

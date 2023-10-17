@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin_master')
 
-@section('title', 'Delivery Courier List')
+@section('title', 'Processing Courier List')
 
 @section('content')
 <div class="row">
