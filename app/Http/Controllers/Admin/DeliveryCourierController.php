@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class DeliveryCourierController extends Controller
 {
+    // Staff Method
     public function deliveryCourier(Request $request)
     {
         if($request->ajax()){
@@ -49,7 +50,7 @@ class DeliveryCourierController extends Controller
             ->rawColumns(['payment_status', 'action'])
             ->make(true);
         }
-        return view('admin.delivery_courier.index');
+        return view('admin.delivery_courier.create');
     }
 
     public function editDeliveryCourierStatus($id)
@@ -157,9 +158,10 @@ class DeliveryCourierController extends Controller
             ->rawColumns(['courier_status', 'action'])
             ->make(true);
         }
-        return view('admin.delivery_courier.list');
+        return view('admin.delivery_courier.index');
     }
 
+    // Manager Method
     public function processingCourierList(Request $request)
     {
         if($request->ajax()){

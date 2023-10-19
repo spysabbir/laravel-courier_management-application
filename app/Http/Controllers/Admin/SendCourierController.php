@@ -8,7 +8,6 @@ use App\Models\Company;
 use App\Models\Cost;
 use App\Models\CourierDetails;
 use App\Models\CourierSummary;
-use App\Models\DefaultSetting;
 use App\Models\Unit;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -18,6 +17,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class SendCourierController extends Controller
 {
+    // Staff Method
     public function sendCourier()
     {
         $branches = Branch::where('status', 'Active')->get();
@@ -176,9 +176,10 @@ class SendCourierController extends Controller
             ->rawColumns(['courier_status', 'action'])
             ->make(true);
         }
-        return view('admin.send_courier.list');
+        return view('admin.send_courier.index');
     }
 
+    // Manager Method
     public function processingCourierList(Request $request)
     {
         if($request->ajax()){
@@ -264,20 +265,5 @@ class SendCourierController extends Controller
                 'status' => 400,
             ]);
         }
-    }
-
-    public function courierDetailsView($id)
-    {
-        $courier_summary = CourierSummary::where('id', $id)->first();
-        $courier_details =  CourierDetails::where('courier_summary_id', $id)->get();
-        return view('admin.send_courier.view', compact('courier_summary', 'courier_details'));
-    }
-
-    public function courierInvoice($id)
-    {
-        $default_setting = DefaultSetting::first();
-        $courier_summary = CourierSummary::where('id', $id)->first();
-        $courier_details = CourierDetails::where('courier_summary_id', $id)->get();
-        return view('admin.send_courier.invoice', compact('courier_summary', 'courier_details', 'default_setting'));
     }
 }

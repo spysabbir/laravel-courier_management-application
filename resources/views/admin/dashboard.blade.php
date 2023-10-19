@@ -43,29 +43,8 @@
                                 <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
                                     <i class="bi bi-file-earmark-check-fill"></i>
                                 </div>
-                                @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
                                 <h3 class="text-white">{{ $all_manager }}</h3>
-                                <p class="mb-0 text-white">All Manager</p>
-                                @else
-                                <h3 class="text-white">{{ App\Models\CourierSummary::where('sender_branch_id', Auth::user()->branch_id)->count() }}</h3>
-                                <p class="mb-0 text-white">Send Courier</p>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card radius-10 bg-purple mb-0">
-                            <div class="card-body text-center">
-                                <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
-                                    <i class="bi bi-tags-fill"></i>
-                                </div>
-                                @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
-                                <h3 class="text-white">{{ $all_courier }}</h3>
-                                <p class="mb-0 text-white">All Courier</p>
-                                @else
-                                <h3 class="text-white">{{ App\Models\CourierSummary::where('receiver_branch_id', Auth::user()->branch_id)->count() }}</h3>
-                                <p class="mb-0 text-white">Delivery Courier</p>
-                                @endif
+                                <p class="mb-0 text-white">Total Manager</p>
                             </div>
                         </div>
                     </div>
@@ -86,6 +65,24 @@
                         </div>
                     </div>
                     <div class="col">
+                        <div class="card radius-10 bg-purple mb-0">
+                            <div class="card-body text-center">
+                                <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
+                                    <i class="bi bi-tags-fill"></i>
+                                </div>
+                                @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
+                                <h3 class="text-white">{{ $all_courier }}</h3>
+                                <p class="mb-0 text-white">Total Courier</p>
+                                @else
+                                <h3 class="text-white">
+                                    {{ App\Models\CourierSummary::where('sender_branch_id', Auth::user()->branch_id)->count() }}
+                                </h3>
+                                <p class="mb-0 text-white">Sender Courier</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
                         <div class="card radius-10 bg-dark mb-0">
                             <div class="card-body text-center">
                                 <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
@@ -96,9 +93,9 @@
                                 <p class="mb-0 text-white">All Message</p>
                                 @else
                                 <h3 class="text-white">
-                                    {{ App\Models\CourierSummary::where('sender_branch_id', Auth::user()->branch_id)->orWhere('receiver_branch_id', Auth::user()->branch_id)->count() }}
+                                    {{ App\Models\CourierSummary::where('receiver_branch_id', Auth::user()->branch_id)->count() }}
                                 </h3>
-                                <p class="mb-0 text-white">All Courier</p>
+                                <p class="mb-0 text-white">Receiver Courier</p>
                                 @endif
                             </div>
                         </div>

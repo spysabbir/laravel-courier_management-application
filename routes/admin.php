@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\CostController;
+use App\Http\Controllers\Admin\CourierController;
 use App\Http\Controllers\Admin\DeliveryCourierController;
 use App\Http\Controllers\Admin\ManagerController;
 use App\Http\Controllers\Admin\PageController;
@@ -151,7 +152,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/delivery/courier/list', [DeliveryCourierController::class, 'deliveryCourierList'])->name('delivery.courier.list');
         });
 
-        Route::get('/courier/details/view/{id}', [SendCourierController::class, 'courierDetailsView'])->name('courier.details.view');
-        Route::get('/courier/invoice/{id}', [SendCourierController::class, 'courierInvoice'])->name('courier.invoice');
+        Route::get('/courier/details/view/{id}', [CourierController::class, 'courierDetailsView'])->name('courier.details.view');
+        Route::get('/courier/invoice/{id}', [CourierController::class, 'courierInvoice'])->name('courier.invoice');
     });
 });
