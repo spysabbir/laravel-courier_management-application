@@ -12,8 +12,8 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="hero-content">
-                    <h1 class="wow fadeInUp" data-wow-delay=".2s">You're Using <span>Free Lite Version</span> </h1>
-                    <p class="wow fadeInUp" data-wow-delay=".4s">Please, purchase full version of the template to remove footer credits, documentation and support.</p>
+                    <h1 class="wow fadeInUp" data-wow-delay=".2s">On-time Delivery<span> and Customer Satisfaction.</span> </h1>
+                    <p class="wow fadeInUp" data-wow-delay=".4s">It is an efficient and user-friendly courier management company. The company work to handle deliveries, track shipments and provide customer service.</p>
                     <a href="{{ route('check.status') }}" rel="nofollow" class="main-btn btn-hover wow fadeInUp" data-wow-delay=".6s">Check Status</a>
                 </div>
             </div>

@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>{{ env('APP_NAME') }} - @yield('title')</title>
+        <title>{{ $default_setting->app_name }} - @yield('title')</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -197,7 +197,7 @@
                         </ul>
                     </div>
                 </div>
-                <p class="text-center">Designed and Developed by <a href="{{ env('APP_URL') }}" style="color: #fff;" rel="nofollow">{{ env('APP_NAME') }}</a></p>
+                <p class="text-center">Designed and Developed by <a href="{{ $default_setting->app_url }}" style="color: #fff;" rel="nofollow">{{ $default_setting->app_name }}</a></p>
             </div>
         </div>
     </footer>
