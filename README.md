@@ -30,9 +30,9 @@ php artisan key:generate
 
 Variable Name | Description
 --- | ---
-DB_* | database settings to connect the database with this project
-MAIL_* | mail settings to send email via smtp server
-SMS_* | sms settings to send sms via sms api
+*DB | database settings for connect the database with this project
+*MAIL | mail settings for send email via smtp server
+*SMS | sms settings for send sms via bulksmsbd api
 
 - Now migrate and seed the database using
  ```
