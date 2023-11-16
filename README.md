@@ -31,7 +31,8 @@ php artisan key:generate
 Variable Name | Description
 --- | ---
 DB_* | database settings to connect the database with this project
-MAIL_* | database settings to send email via SMTP
+MAIL_* | mail settings to send email via smtp server
+SMS_* | sms settings to send sms via sms api
 
 - Now migrate and seed the database using
  ```
@@ -55,5 +56,7 @@ Email: manager2@email.com
 For Staff:- 
 Email: staff1@email.com
 Email: staff2@email.com
+
+All account password as same
 Password: 12345678
 ``` 
