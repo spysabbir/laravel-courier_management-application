@@ -28,7 +28,7 @@
                                             <span class="text-danger error-text company_name_error"></span>
                                         </div>
                                         <div class="mb-3">
-                                            <label>Company Owner</label>
+                                            <label>Company Owner Name</label>
                                             <input type="text" class="form-control" name="company_owner" placeholder="Company Owner">
                                             <span class="text-danger error-text company_owner_error"></span>
                                         </div>
@@ -113,7 +113,7 @@
                             <tr>
                                 <th>Sl No</th>
                                 <th>Company Name</th>
-                                <th>Company Owner</th>
+                                <th>Company Owner Name</th>
                                 <th>Company Phone Number</th>
                                 <th>Company Photo</th>
                                 <th>Company Status</th>
@@ -138,7 +138,7 @@
                                                     <span class="text-danger error-text update_company_name_error"></span>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label>Company Owner</label>
+                                                    <label>Company Owner Name</label>
                                                     <input type="text" class="form-control" name="company_owner" id="company_owner">
                                                     <span class="text-danger error-text update_company_owner_error"></span>
                                                 </div>

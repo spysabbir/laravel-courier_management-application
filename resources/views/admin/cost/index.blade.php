@@ -23,7 +23,7 @@
                                     @csrf
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label>Unit name</label>
+                                            <label>Unit Name</label>
                                             <select name="unit_id" class="form-control">
                                                 <option value="">Select</option>
                                                 @foreach ($units as $unit)
@@ -93,8 +93,8 @@
                             <tr>
                                 <th>Sl No</th>
                                 <th>Unit Name</th>
-                                <th>Unit Status</th>
                                 <th>Cost Rate</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
 
@@ -111,7 +111,7 @@
                                             <div class="modal-body">
                                                 <input type="hidden" id="cost_id">
                                                 <div class="mb-3">
-                                                    <label>Cost name</label>
+                                                    <label>Unit name</label>
                                                     <select name="unit_id" id="unit_id" class="form-control">
                                                         <option value="">Select</option>
                                                         @foreach ($units as $unit)
@@ -121,7 +121,7 @@
                                                     <span class="text-danger error-text update_unit_id_error"></span>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label>Cost email</label>
+                                                    <label>Cost Rate</label>
                                                     <input type="text" class="form-control" name="cost_rate" id="cost_rate">
                                                     <span class="text-danger error-text update_cost_rate_error"></span>
                                                 </div>
