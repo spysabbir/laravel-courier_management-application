@@ -1,5 +1,28 @@
-@extends('errors::minimal')
+@extends('errors::layout')
 
 @section('title', __('Server Error'))
-@section('code', '500')
-@section('message', __('Server Error'))
+
+@section('content')
+<div class="container mt-5">
+    <div class="card py-5">
+    <div class="row g-0">
+        <div class="col col-xl-5">
+        <div class="card-body p-4">
+            <h1 class="display-1"><span class="text-danger">5</span><span class="text-primary">0</span><span class="text-success">0</span></h1>
+            <h2 class="font-weight-bold display-4">Server Error</h2>
+            <p>You have reached the edge of the universe.
+            <br>The page you requested could not be found.
+            <br>Dont'worry and return to the previous page.</p>
+            <div class="mt-5">
+                <a href="{{ url()->previous() }}" class="btn btn-primary btn-lg px-md-5 radius-30">Go Back</a>
+            </div>
+        </div>
+        </div>
+        <div class="col-xl-7">
+        <img src="{{ asset('admin') }}/images/error/500-error.png" class="img-fluid" alt="">
+        </div>
+    </div>
+    <!--end row-->
+    </div>
+</div>
+@endsection
