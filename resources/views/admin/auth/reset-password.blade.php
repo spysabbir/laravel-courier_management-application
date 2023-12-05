@@ -3,7 +3,7 @@
 @section('title', 'Genrate New Password')
 
 @section('content')
-<div class="col-lg-6">
+<div class="col-lg-7">
     <div class="card-body p-4 p-sm-5">
         <h5 class="card-title">Genrate New Password</h5>
         <p class="card-text mb-5">We received your reset password request. Please enter your new password!</p>

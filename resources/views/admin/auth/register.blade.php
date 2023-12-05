@@ -3,7 +3,7 @@
 @section('title', 'Register')
 
 @section('content')
-<div class="col-lg-6">
+<div class="col-lg-7">
     <div class="card-body p-4 p-sm-5">
         <h5 class="card-title">Sign Up</h5>
         <p class="card-text mb-5">See your growth and get consulting support!</p>

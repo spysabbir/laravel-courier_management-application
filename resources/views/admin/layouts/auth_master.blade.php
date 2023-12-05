@@ -32,7 +32,7 @@
                 <div class="authentication-card">
                     <div class="card shadow rounded-0 overflow-hidden">
                     <div class="row g-0">
-                        <div class="col-lg-6 bg-login d-flex align-items-center justify-content-center">
+                        <div class="col-lg-5 bg-login d-flex align-items-center justify-content-center">
                             <img src="{{ asset('admin') }}/images/error/login-img.jpg" class="img-fluid" alt="">
                         </div>
                         @yield('content')
@@ -48,6 +48,8 @@
     <!--plugins-->
     <script src="{{ asset('admin') }}/js/jquery.min.js"></script>
     <script src="{{ asset('admin') }}/js/pace.min.js"></script>
+
+    @yield('script')
 
 </body>
 </html>

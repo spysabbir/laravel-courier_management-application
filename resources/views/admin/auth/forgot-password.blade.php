@@ -3,7 +3,7 @@
 @section('title', 'Forgot Password')
 
 @section('content')
-<div class="col-lg-6">
+<div class="col-lg-7">
     <div class="card-body p-4 p-sm-5">
         <h5 class="card-title">Forgot Password?</h5>
         <p class="card-text mb-5">Enter your registered email ID to reset the password</p>
