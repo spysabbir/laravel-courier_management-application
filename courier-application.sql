@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2023 at 11:43 AM
+-- Generation Time: Dec 12, 2023 at 05:08 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -556,12 +556,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone_number`, `gender`, `date_of_birth`, `address`, `profile_photo`, `last_active`, `role`, `branch_id`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'superadmin@email.com', '$2y$10$gfXTDxamlHRqQrbipcQUfu3gWT7WKzc.suB9BMK0f9yDL41OS0KIO', '01953321402', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-06-23 23:04:13', 'Super Admin', NULL, 'Active', 'iTzmj3OGhF8YsCmBmuPfGOYy79BMdU7a8RFfpQs89O4Us1qHqJ5RtJGw7I7M', '2023-05-15 04:14:42', '2023-06-23 23:04:13'),
-(2, 'Admin', 'admin@email.com', '$2y$10$0yFx6jO3aoOGwY5SqUcoxOOeTiSLe79Of23fcRAD2u70Gzebc2HGi', '01878136530', 'Male', '2023-05-15', 'Jessore, BD', 'default_profile_photo.png', '2023-06-23 23:04:31', 'Admin', NULL, 'Active', 'cKLIDIB8XJZH5X0KcbWAp9n7esTt0bd2t3dGGtfJF2L9YHScRjESoTyx1NEO', '2023-05-15 04:14:42', '2023-06-23 23:04:31'),
-(3, 'Manager 1', 'manager1@email.com', '$2y$10$ZxntK5.zQjd.mZAG/rN3e.ONZUTzBEL6LTEhxXDrJWREYTmBdyPoO', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-06-24 00:41:37', 'Manager', 1, 'Active', NULL, '2023-05-15 04:14:42', '2023-06-24 00:41:37'),
-(4, 'Manager 2', 'manager2@email.com', '$2y$10$Yv3fBtgfo9WNunTVzMSIietB9bEqX7mhFelN40PK3WWy1hisp5N9i', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-05-20 04:26:31', 'Manager', 2, 'Active', NULL, '2023-05-15 04:14:42', '2023-05-20 04:26:31'),
-(5, 'Staff 1', 'staff1@email.com', '$2y$10$BtzkUCp6mk6Z8D2Bv9MLd.5b7yWR/ZoqpSddVRHsrq50JTFUUEcmu', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-05-20 04:55:48', 'Staff', 1, 'Active', 'vJ037wFHmNdfJFlhWpT1C5nP4bTCv8xN9mp4WiyJOHOZ6zr7ox7CNjb7qW0z', '2023-05-15 04:14:42', '2023-05-20 04:55:48'),
-(6, 'Staff 2', 'staff2@email.com', '$2y$10$g1suCd7rijpTTOM0xeUBzeP0ElpvRceIYXeADRBplpQZGWGS.G0g.', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-06-24 00:42:31', 'Staff', 2, 'Active', NULL, '2023-05-15 04:14:42', '2023-06-24 00:42:31'),
+(1, 'Super Admin', 'superadmin@email.com', '$2y$10$gfXTDxamlHRqQrbipcQUfu3gWT7WKzc.suB9BMK0f9yDL41OS0KIO', '01953321402', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-12-04 23:22:32', 'Super Admin', NULL, 'Active', '0HygdXw5tK2of5BqjXOticU2gDpD8HR0yyOLsFWUjnUklo9p32qkyhmfGWcy', '2023-05-15 04:14:42', '2023-12-04 23:22:32'),
+(2, 'Admin', 'admin@email.com', '$2y$10$0yFx6jO3aoOGwY5SqUcoxOOeTiSLe79Of23fcRAD2u70Gzebc2HGi', '01878136530', 'Male', '2023-05-15', 'Jessore, BD', 'default_profile_photo.png', '2023-12-04 23:24:42', 'Admin', NULL, 'Active', 'YpN85qYQpvhJ0NlHJBQnRe36BSJPnRG7R7lxSH57odoC6vB8UuEabXSB7dkH', '2023-05-15 04:14:42', '2023-12-04 23:24:42'),
+(3, 'Manager 1', 'manager1@email.com', '$2y$10$ZxntK5.zQjd.mZAG/rN3e.ONZUTzBEL6LTEhxXDrJWREYTmBdyPoO', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-12-04 23:18:47', 'Manager', 1, 'Active', NULL, '2023-05-15 04:14:42', '2023-12-04 23:18:47'),
+(4, 'Manager 2', 'manager2@email.com', '$2y$10$Yv3fBtgfo9WNunTVzMSIietB9bEqX7mhFelN40PK3WWy1hisp5N9i', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-12-04 23:19:24', 'Manager', 2, 'Active', NULL, '2023-05-15 04:14:42', '2023-12-04 23:19:24'),
+(5, 'Staff 1', 'staff1@email.com', '$2y$10$BtzkUCp6mk6Z8D2Bv9MLd.5b7yWR/ZoqpSddVRHsrq50JTFUUEcmu', '01878136530', 'Male', '2023-05-15', 'Dhaka, BD', 'default_profile_photo.png', '2023-11-29 05:43:33', 'Staff', 1, 'Active', 'C5QhyifFOeVLJfDS3pFHTXzJEmJmoCxeMJR7qzgPuRZP7sCdMsqaMSYTInVB', '2023-05-15 04:14:42', '2023-11-29 05:43:33'),
+(6, 'Staff 2', 'staff2@email.com', '$2y$10$g1suCd7rijpTTOM0xeUBzeP0ElpvRceIYXeADRBplpQZGWGS.G0g.', '01878136530', 'Male', '2023-05-15', 'Khulna, BD', 'default_profile_photo.png', '2023-12-04 23:17:51', 'Staff', 2, 'Active', NULL, '2023-05-15 04:14:42', '2023-12-04 23:17:51'),
 (7, 'Sabbir', 'staffsabbir@email.com', '$2y$10$XBmGgtwRKRbZdnQcK3c6BecqW8WSV7KrWtSgPfe/EOOYohTflolq2', '01878136530', NULL, NULL, 'Dhaka BD', 'default_profile_photo.png', '2023-05-20 04:23:44', 'Staff', 1, 'Active', 'Yyk3rSOkJQRw4KjOi5BihoMHyRFxZheZsP4uYFOJdwbxwYklrzpMGpAV0X1p', '2023-05-20 04:13:12', '2023-05-20 04:23:44'),
 (8, 'Md Sabbir Ahammed', 'staff3@email.com', '$2y$10$QDpRONaGpTn0hIEdCQm2M.RSFbsfcRwoSu/cHbD8CGm3jjfJgiRm.', '01878136530', NULL, NULL, 'DDD', 'default_profile_photo.png', '2023-05-20 10:18:30', 'Staff', 1, 'Active', NULL, '2023-05-20 04:18:30', '2023-05-20 04:18:30');
 
