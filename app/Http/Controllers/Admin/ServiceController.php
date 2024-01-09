@@ -67,7 +67,7 @@ class ServiceController extends Controller
         $validator = Validator::make($request->all(), [
             'service_name' => 'required',
             'service_details' => 'required',
-            'service_photo' => 'required|image|mimes:png,jpg,jpeg,webp'
+            'service_photo' => 'required|image|mimes:png,jpg,jpeg'
         ]);
 
         if($validator->fails()){
@@ -108,7 +108,7 @@ class ServiceController extends Controller
         $validator = Validator::make($request->all(), [
             'service_name' => 'required',
             'service_details' => 'required',
-            'service_photo' => 'nullable|image|mimes:png,jpg,jpeg,webp'
+            'service_photo' => 'nullable|image|mimes:png,jpg,jpeg'
         ]);
 
         if($validator->fails()){

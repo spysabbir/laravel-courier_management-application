@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label>Company Photo</label>
-                                            <input type="file" name="company_photo" class="form-control" id="image" accept=".jpeg, .jpg, .png, .webp">
+                                            <input type="file" name="company_photo" class="form-control" id="image" accept=".jpeg, .jpg, .png">
                                             <img src="" width="100"  height="100" id="imagePreview" style="display:none;">
                                             <span class="text-danger error-text company_photo_error"></span>
                                         </div>
@@ -164,7 +164,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Company Photo</label>
-                                                    <input type="file" name="company_photo" class="form-control" id="updateImage" accept=".jpeg, .jpg, .png, .webp">
+                                                    <input type="file" name="company_photo" class="form-control" id="updateImage" accept=".jpeg, .jpg, .png">
                                                     <img src="" width="100"  height="100" id="updateImagePreview">
                                                     <span class="text-danger error-text update_company_photo_error"></span>
                                                 </div>

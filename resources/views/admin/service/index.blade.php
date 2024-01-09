@@ -34,7 +34,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label>Service Photo</label>
-                                            <input type="file" name="service_photo" class="form-control" id="image" accept=".jpeg, .jpg, .png, .webp, .svg">
+                                            <input type="file" name="service_photo" class="form-control" id="image" accept=".jpeg, .jpg, .png">
                                             <img src="" width="100"  height="100" id="imagePreview" style="display:none;">
                                             <span class="text-danger error-text service_photo_error"></span>
                                         </div>
@@ -122,7 +122,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Service Photo</label>
-                                                    <input type="file" name="service_photo" class="form-control" id="updateImage" accept=".jpeg, .jpg, .png, .webp, .svg">
+                                                    <input type="file" name="service_photo" class="form-control" id="updateImage" accept=".jpeg, .jpg, .png">
                                                     <img src="" width="100"  height="100" id="updateImagePreview">
                                                     <span class="text-danger error-text update_service_photo_error"></span>
                                                 </div>

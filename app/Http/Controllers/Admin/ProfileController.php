@@ -25,7 +25,7 @@ class ProfileController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|max:255|unique:users,email,'.Auth::user()->id,
             'phone_number' => 'nullable|min:11|max:14',
-            'profile_photo' => 'nullable|image|mimes:png,jpg,jpeg,webp',
+            'profile_photo' => 'nullable|image|mimes:png,jpg,jpeg',
         ]);
 
         Auth::user()->update($request->except('profile_photo'));
